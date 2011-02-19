@@ -79,25 +79,8 @@ while(true) {
             break;
             
         case PLAYER_CHANGETEAM:
-            var team, balance, redSuperiority;
+            var team;
             team = read_ubyte(socket);
-            
-            redSuperiority = 0   //calculate which team is bigger or not
-                
-                for(i=0; i<ds_list_size(global.players); i+=1) {
-                    testingplayer = ds_list_find_value(global.players, i);
-                        if(testingplayer.team == TEAM_RED) {
-                            redSuperiority +=1;
-                        } else if (testingplayer.team == TEAM_BLUE) {
-                            redSuperiority -=1;
-                        }
-                }
-
-        if(redSuperiority > 0) balance= TEAM_RED;
-        else if(redSuperiority < 0) balance= TEAM_BLUE;
-        else balance= -1;
-        
-        if balance != team { //ignore if the requested team is full
             if(getCharacterObject(team, player.class) != -1 or team==TEAM_SPECTATOR) {  
                 if(player.object != -1) {
                     with(player.object) {
@@ -111,7 +94,6 @@ while(true) {
                 player.team = team;
                 ServerPlayerChangeteam(playerId, player.team, global.sendBuffer);
             }
-        }
             break;                   
             
         case CHAT_BUBBLE:
