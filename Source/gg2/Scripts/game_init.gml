@@ -304,6 +304,36 @@ global.launchMap = "";
     // parse the protocol version UUID for later use
     parseProtocolUuid();
     
+        //Class limits modified to suite the crazy order gg2 handles the classes
+    for (i = 0; i < 10; i += 1) {
+        global.classlimit[i] = -1;
+    }
+    
+    ini_open("classlimits.ini");
+    global.classlimit[CLASS_SCOUT] = ini_read_real("Class Limits", "Runner", -1);
+    global.classlimit[CLASS_PYRO] = ini_read_real("Class Limits", "Firebug", -1);
+    global.classlimit[CLASS_SOLDIER] = ini_read_real("Class Limits", "Rocketman", -1);
+    global.classlimit[CLASS_HEAVY] = ini_read_real("Class Limits", "Overweight", -1);
+    global.classlimit[CLASS_DEMOMAN] = ini_read_real("Class Limits", "Detonator", -1);
+    global.classlimit[CLASS_MEDIC] = ini_read_real("Class Limits", "Healer", -1);
+    global.classlimit[CLASS_ENGINEER] = ini_read_real("Class Limits", "Constructor", -1);
+    global.classlimit[CLASS_SPY] = ini_read_real("Class Limits", "Infiltrator", -1);
+    global.classlimit[CLASS_SNIPER] = ini_read_real("Class Limits", "Rifleman", -1);
+    global.classlimit[CLASS_QUOTE] = ini_read_real("Class Limits", "Not a secret classlimit", -1);
+    ini_write_real("Class Limits", "Runner",global.classlimit[CLASS_SCOUT]);
+    ini_write_real("Class Limits", "Firebug",global.classlimit[CLASS_PYRO]);
+    ini_write_real("Class Limits", "Rocketman",global.classlimit[CLASS_SOLDIER]);
+    ini_write_real("Class Limits", "Overweight",global.classlimit[CLASS_HEAVY]);
+    ini_write_real("Class Limits", "Detonator",global.classlimit[CLASS_DEMOMAN]);
+    ini_write_real("Class Limits", "Healer",global.classlimit[CLASS_MEDIC]);
+    ini_write_real("Class Limits", "Constructor",global.classlimit[CLASS_ENGINEER]);
+    ini_write_real("Class Limits", "Infiltrator",global.classlimit[CLASS_SPY]);
+    ini_write_real("Class Limits", "Rifleman",global.classlimit[CLASS_SNIPER]);
+    ini_write_real("Class Limits", "Not a secret classlimit",global.classlimit[CLASS_QUOTE]);
+             
+    ini_close();
+    
+    
     //Key Mapping
     ini_open("controls.gg2");
     global.jump = ini_read_real("Controls", "jump", ord("W"));

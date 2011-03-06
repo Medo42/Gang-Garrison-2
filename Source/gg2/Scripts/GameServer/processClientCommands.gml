@@ -59,7 +59,7 @@ while(true) {
         case PLAYER_CHANGECLASS:
             var class;
             class = read_ubyte(socket);
-            if(getCharacterObject(player.team, class) != -1) {
+            if classLimitCheck(player.team,class)=true && (getCharacterObject(player.team, class) != -1) {
                 player.class = class;
                 if(player.object != -1) {
                     with(player.object) {
@@ -81,7 +81,6 @@ while(true) {
         case PLAYER_CHANGETEAM:
             var newTeam, balance, redSuperiority;
             newTeam = read_ubyte(socket);
-            
             redSuperiority = 0   //calculate which team is bigger
             with(Player) {
                 if(team == TEAM_RED) {
@@ -102,14 +101,23 @@ while(true) {
                         }
                         player.object = -1;
                         player.alarm[5] = global.Server_Respawntime;
-                    } else if(player.alarm[5]<=0) {
+                    } else if (player.alarm[5]<=0) {
                         player.alarm[5] = 1;
                     }
                     player.team = newTeam;
+                    
+                    if (classLimitCheck (player.team,player.class) = false) {
+                        newclass=assignUnusedClass(player.team)
+                        player.class = newclass; //set class to new class
+                        ServerPlayerChangeclass(playerId,newclass,global.sendBuffer)
+                    }
                     ServerPlayerChangeteam(playerId, player.team, global.sendBuffer);
+                    
+
                 }
+
             }
-            break;                   
+            break;          
             
         case CHAT_BUBBLE:
             var bubbleImage;

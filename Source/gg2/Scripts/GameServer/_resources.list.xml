@@ -5,5 +5,7 @@
   <resource name="GameServerDefineCommands" type="RESOURCE"/>
   <resource name="acceptJoiningPlayer" type="RESOURCE"/>
   <resource name="serviceJoiningPlayer" type="RESOURCE"/>
+  <resource name="classLimitCheck" type="RESOURCE"/>
+  <resource name="assignUnusedClass" type="RESOURCE"/>
   <resource name="processClientCommands" type="RESOURCE"/>
 </resources>
