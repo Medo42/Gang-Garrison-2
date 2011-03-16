@@ -6,10 +6,11 @@ teamplayers=0
 unlimited=false
 
 for (i=0; i<10; i+=1) {
-    if global.classlimit[i] <= -1 {
-        unlimited=true
+    if global.classlimit[i] < 0 {
+                unlimited=true
         }
-        classlimitmax+=global.classlimit[i];
+        classlimitmax+=global.classlimit[i]
+        
     }
     
 
@@ -21,7 +22,7 @@ with(Player) {
         } 
     }
 if unlimited=true return true;
-if teamplayers > classlimitmax && (unlimited = false){ //if the players exceed class limits, just start ignoring classlimits
+if teamplayers > classlimitmax and (unlimited = false){ //if the players exceed class limits, just start ignoring classlimits
     return true;
     }
 
