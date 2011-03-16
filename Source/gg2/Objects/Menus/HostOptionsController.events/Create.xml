@@ -34,7 +34,7 @@ xbegin = 40;
 ybegin = 200;
 spacing = 30;
 width = 300; 
-items = 11;
+items = 12;
 valueoffset = 200;
 editing = -1;
 canClick = false;
@@ -49,8 +49,9 @@ item[5] = "Capture Limit:";
 item[6] = "Respawn Time (secs):";
 item[7] = "Auto Balance:";
 item[8] = "Announce to Lobby:";
-item[9] = "Start Game";
-item[10] = "Back";
+item[9] = "Classlimits";
+item[10] = "Start Game";
+item[11] = "Back";
     
 global.serverName = global.defaultServerName;
 value[0] = global.serverName;
@@ -75,6 +76,7 @@ if(global.useLobbyServer) {
     
 value[9] = "";
 value[10] = "";
+value[11] = "";
 </argument>
       </arguments>
     </action>

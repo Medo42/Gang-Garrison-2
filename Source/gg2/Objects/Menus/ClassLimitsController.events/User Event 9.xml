@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">instance_create(x,y,ClassLimitsController);
-instance_destroy();
+        <argument kind="STRING">editing=9;
 </argument>
       </arguments>
     </action>

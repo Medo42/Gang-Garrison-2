@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+    xoffset = view_xview[0];
+    yoffset = view_yview[0];
+    xsize = view_wview[0];
+    ysize = view_hview[0];
+    
+    virtualitem = -1;
+    xbegin = 40;
+    ybegin = 170;
+    spacing = 30;
+    width = 300; 
+    items = 13;
+    valueoffset = 200;
+    editing = -1;
+    canClick = false;
+    alarm[0] = 15;
+    
+    item[0] = "Runner Limit";
+    item[1] = "Firebug Limit";
+    item[2] = "Rocketman Limit";
+    item[3] = "Overweight Limit";
+    item[4] = "Detonator Limit";
+    item[5] = "Healer Limit";
+    item[6] = "Constructor Limit";
+    item[7] = "Infiltrator Limit";
+    item[8] = "Rifleman Limit";
+    item[9] = "Secret Limit";
+    item[10] = "Set All Class Limits";
+    item[11] = "Turn Off Class Limits";
+    item[12] = "Back";
+    
+    value[0]=global.classlimit[CLASS_SCOUT]
+    value[1]=global.classlimit[CLASS_PYRO]
+    value[2]=global.classlimit[CLASS_SOLDIER]
+    value[3]=global.classlimit[CLASS_HEAVY]
+    value[4]=global.classlimit[CLASS_DEMOMAN]
+    value[5]=global.classlimit[CLASS_MEDIC]
+    value[6]=global.classlimit[CLASS_ENGINEER]
+    value[7]=global.classlimit[CLASS_SPY]
+    value[8]=global.classlimit[CLASS_SNIPER]
+    value[9]=global.classlimit[CLASS_QUOTE]
+    value[10] = "";
+    value[11] = "";
+    value[12] = "";
+
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

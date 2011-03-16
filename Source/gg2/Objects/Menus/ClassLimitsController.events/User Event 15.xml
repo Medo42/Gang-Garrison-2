@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="25">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">    for(i=0;i&gt;10;i+=1){
+    value[i]=round(real((value[i])));
+    }
+    global.classlimit[CLASS_SCOUT]=value[0]
+    global.classlimit[CLASS_PYRO]=value[1]
+    global.classlimit[CLASS_SOLDIER]=value[2]
+    global.classlimit[CLASS_HEAVY]=value[3]
+    global.classlimit[CLASS_DEMOMAN]=value[4]
+    global.classlimit[CLASS_MEDIC]=value[5]
+    global.classlimit[CLASS_ENGINEER]=value[6]
+    global.classlimit[CLASS_SPY]=value[7]
+    global.classlimit[CLASS_SNIPER]=value[8]
+    global.classlimit[CLASS_QUOTE]=value[9]
+    
+    ini_open("gg2.ini");
+    ini_write_real("Class Limits", "Runner",global.classlimit[CLASS_SCOUT]);
+    ini_write_real("Class Limits", "Firebug",global.classlimit[CLASS_PYRO]);
+    ini_write_real("Class Limits", "Rocketman",global.classlimit[CLASS_SOLDIER]);
+    ini_write_real("Class Limits", "Overweight",global.classlimit[CLASS_HEAVY]);
+    ini_write_real("Class Limits", "Detonator",global.classlimit[CLASS_DEMOMAN]);
+    ini_write_real("Class Limits", "Healer",global.classlimit[CLASS_MEDIC]);
+    ini_write_real("Class Limits", "Constructor",global.classlimit[CLASS_ENGINEER]);
+    ini_write_real("Class Limits", "Infiltrator",global.classlimit[CLASS_SPY]);
+    ini_write_real("Class Limits", "Rifleman",global.classlimit[CLASS_SNIPER]);
+    ini_write_real("Class Limits", "Not a secret classlimit",global.classlimit[CLASS_QUOTE]);
+    ini_close();
+    editing = -1;
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

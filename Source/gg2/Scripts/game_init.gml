@@ -309,7 +309,7 @@ global.launchMap = "";
         global.classlimit[i] = -1;
     }
     
-    ini_open("classlimits.ini");
+    ini_open("gg2.ini");
     global.classlimit[CLASS_SCOUT] = ini_read_real("Class Limits", "Runner", -1);
     global.classlimit[CLASS_PYRO] = ini_read_real("Class Limits", "Firebug", -1);
     global.classlimit[CLASS_SOLDIER] = ini_read_real("Class Limits", "Rocketman", -1);
