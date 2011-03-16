@@ -7,17 +7,22 @@ for(i=0;i>9;i+=1) {
     notQuote=true
     }
 }
+if (notQuote=false){
+    if (classLimitCheck(argument0,CLASS_QUOTE)=true){//maybe quote will work?
+        tempclass=CLASS_QUOTE
+        foundclass=true
+    }else if (classLimitCheck(argument0,CLASS_QUOTE)=false) {//this usually shouldn't happen (no availible players), but just incase?
+        tempclass = min(floor(random(10)),ceil(random(10)))
+        foundclass=true
+        }
+    }
 while (foundclass=false) {
     tempclass = min(floor(random(9)),ceil(random(9)))
         if (classLimitCheck(argument0,tempclass)=true) {
             foundclass=true
             }
-       if (foundclass=false) and (notQuote=false){//maybe quote will work?
-            if (classLimitCheck(argument0,CLASS_QUOTE)=true) {
-                foundclass=true
-                tempclass=CLASS_QUOTE
-        }
+      
     }
-}
+
     
 return tempclass;
