@@ -3,26 +3,18 @@
 check = 0;
 classlimitmax=0
 teamplayers=0
-unlimited=false
 
 for (i=0; i<10; i+=1) {
-    if global.classlimit[i] < 0 {
-                unlimited=true
-        }
         classlimitmax+=global.classlimit[i]
         
     }
-    
 
 with(Player) {
     if (team=argument0){
-           if (class) = argument1 {
                 GameServer.teamplayers+=1;
-           }
         } 
     }
-if unlimited=true return true;
-if teamplayers > classlimitmax and (unlimited = false){ //if the players exceed class limits, just start ignoring classlimits
+if teamplayers > classlimitmax{ //if the players exceed class limits, just start ignoring classlimits
     return true;
     }
 

@@ -32,7 +32,7 @@
         }
 
         draw_text(xbegin,ybegin+i*spacing,item[i]);
-        draw_text(xbegin+valueoffset,ybegin+i*spacing,value[i]);
+        draw_text(xbegin+valueoffset,ybegin+i*spacing,string(value[i]))
     }
 }
 </argument>

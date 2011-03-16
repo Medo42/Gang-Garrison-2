@@ -13,7 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if editing!=10 {
+        <argument kind="STRING">for (i=0;i&lt;10;i+=1) {
+        value[i]=round(real(value[i]))
+        global.classlimit[i]=round(real(value[i]))
+        }
+if editing!=10 {
     event_user(15);
 }else if editing=10{
     for (i=0;i&lt;10;i+=1) {
