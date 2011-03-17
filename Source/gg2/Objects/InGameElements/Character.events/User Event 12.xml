@@ -28,7 +28,7 @@
         temp = 0;
         if(cloak) temp |= $01;
         if(intel) temp |= $02;
-        /* coding for later in case we want to sync moveStatus
+        //allocate the next three bits of the byte for movestatus sync(maximum up to 7 unique) 
         switch (moveStatus) {
             case (0): temp |=$04
             break;
@@ -36,11 +36,11 @@
             break;
             case (2): temp |=$10
             break;
-            case (3): temp |=$10
+            case (3): temp |=$C
             break;
-            case (4): temp |=$20
+            case (4): temp |=$18
             break;
-        }*/
+        }
         write_ubyte(global.serializeBuffer, temp);               
     }
    
