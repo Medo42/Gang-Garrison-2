@@ -77,6 +77,14 @@ else if taunting == false {
         draw_sprite_ext(sprite_index,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
     }
 }
+
+if (burnDuration &gt; 0 and burnIntensity &gt; 0) {
+    repeat (5 * floor(burnIntensity/maxIntensity))
+    {
+        draw_sprite_ext(FlameS, 0, x + random_range(-(bbox_right-bbox_left)/2, (bbox_right-bbox_left)/2), y + 
+        random_range(-(bbox_top-bbox_bottom)/2, (bbox_top-bbox_bottom)/2), 1, 1, 0, c_white, burnDuration / maxDuration);
+    }    
+}
 </argument>
       </arguments>
     </action>

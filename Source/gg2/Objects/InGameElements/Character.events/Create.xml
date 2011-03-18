@@ -31,6 +31,17 @@
     stabbing = 0;
     onCabinet = 0;
     
+    //afterburn stuff
+    burnIntensity = 0;
+    maxIntensity = 8; //maximum afterburn intensity in DPS
+    burnDuration = 0;
+    maxDuration = 210; //maximum afterburn length
+    decayDelay = 45; //time between burning and intensity lowering
+    decayDuration = 170; //time between intensity lowering and zeroing out
+    durationDecay = 1; //amount that duration lowers per step
+    intensityDecay = burnIntensity / decayDuration;
+    burnedBy = -1;
+    
     // controls
     keyState = 0;
     lastKeyState = 0;
