@@ -68,7 +68,7 @@ while(true) {
 				{
                     with(player.object)
 					{
-                        if (player.quickspawn = 0)
+                        if (!player.quickspawn)
 						{
                             if (lastDamageDealer == -1 || lastDamageDealer == player)
 							{
