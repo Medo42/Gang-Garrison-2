@@ -71,6 +71,7 @@
             if(id != other.ownerPlayer and team != other.owner.team and object != -1) {
                 if(collision_line(other.x,other.y,other.x2,other.y2,object,true,false)&gt;=0) &amp;&amp; object.ubered == 0 {
                     object.hp -= other.hitDamage;
+                    object.timeSinceDamageTaken = 0;
             //new
                     if (object.lastDamageDealer != other.ownerPlayer &amp;&amp; object.lastDamageDealer != object.player){
                         object.secondToLastDamageDealer = object.lastDamageDealer;

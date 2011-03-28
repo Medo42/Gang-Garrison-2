@@ -14,13 +14,14 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">speed = min(speed, 15);
-
+if timeSinceDamageTaken &lt; 450 timeSinceDamageTaken += 1;
 //let the burning begin
 {
     if (burnDuration &gt; 0)
     {
         burnDuration -= durationDecay;
         hp -= burnIntensity / 30;
+        timeSinceDamageTaken = 0;
         if (lastDamageDealer != burnedBy &amp;&amp; lastDamageDealer != player) {
             secondToLastDamageDealer = lastDamageDealer;
             alarm[4] = alarm[3];

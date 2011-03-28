@@ -18,7 +18,7 @@
     yoffset = 0;
     refireTime = 3;
     healTarget = -1;
-    healAmmount = 1;
+    healAmmount = 0.5;
     healing=false;
     hphealed = 0;
     maxHealDistance = 300;

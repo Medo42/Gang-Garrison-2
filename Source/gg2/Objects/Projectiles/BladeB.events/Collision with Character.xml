@@ -17,6 +17,7 @@
     if(other.id != ownerPlayer.object and other.team != team) {
         if other.ubered == 0 { 
             other.hp -= hitDamage;
+            other.timeSinceDamageTaken = 0;
 //new stuff
             if (other.lastDamageDealer != ownerPlayer &amp;&amp; other.lastDamageDealer != other.player){
                 other.secondToLastDamageDealer = other.lastDamageDealer;

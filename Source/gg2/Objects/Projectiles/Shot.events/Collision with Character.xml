@@ -24,6 +24,7 @@
                 */
 
             other.hp -= damage;
+            other.timeSinceDamageTaken = 0;
 //new stuff
             if (other.lastDamageDealer != ownerPlayer &amp;&amp; other.lastDamageDealer != other.player){
                 other.secondToLastDamageDealer = other.lastDamageDealer;

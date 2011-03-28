@@ -16,6 +16,7 @@
         <argument kind="STRING">if (other.team != team and !other.ubered and other.hp &gt; 0)
 {
     other.hp-=hitDamage;
+    other.timeSinceDamageTaken = 0;
     alarm[0]-=70;
     //new
     if (other.lastDamageDealer != ownerPlayer &amp;&amp; other.lastDamageDealer != other.player){
