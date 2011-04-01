@@ -19,6 +19,7 @@
     class = CLASS_SCOUT;
     socket = -1;
     name = "";
+    ammoByte = 0
     
     //fuck your shit I'm making statistic arrays
     stats[KILLS] = 0;

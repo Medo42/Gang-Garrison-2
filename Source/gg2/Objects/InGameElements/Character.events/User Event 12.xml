@@ -29,9 +29,12 @@
         temp = 0;
         if(cloak) temp |= $01;
         if(intel) temp |= $02;
+        if(currentWeapon.readyToShoot) temp |= $04;
         //allocate the next three bits of the byte for movestatus sync
-        temp |= (moveStatus &amp; $07) &lt;&lt; 2;
-        write_ubyte(global.serializeBuffer, temp);               
+        temp |= (moveStatus &amp; $07) &lt;&lt; 3;
+        //allocate the last two bits of the byte for ammosync
+        temp |= (player.ammoByte &amp; $C0);
+        write_ubyte(global.serializeBuffer, temp);
     }
    
 

@@ -48,6 +48,8 @@
                 show_message("Invalid player object while deserializing");
             }
         }
+        //read the ammoByte, to be stored and comepleted in the object code
+        ammoByte=((subobjects &gt;&gt;2 )&amp;$3F);
         with(object) event_user(13);
     } else {
         if(object != -1) with(object) instance_destroy();

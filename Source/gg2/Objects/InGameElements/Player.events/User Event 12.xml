@@ -30,9 +30,15 @@
     } 
     
     subobjects=0;
+    ammoByte=0
     
     if(object != -1) subobjects |= $01;
     if(sentry != -1) subobjects |= $02;
+    //we're storing a piece of the ammo code here to circumvent adding a new byte - CIRCUMVENTION POWERS GOOO
+    if(object!= -1) {
+        ammoByte=object.currentWeapon.ammoCount;
+        subobjects  |= ((ammoByte &amp; $3F) &lt;&lt; 2);
+    }
     write_ubyte(global.serializeBuffer, subobjects);
 
     if(object != -1) with(object) event_user(12);     
