@@ -32,13 +32,15 @@
   screen_refresh()
   io_handle()
   // convert it to a sprite, and delete the surface
-  if(global.CustomMapCollisionSprite != -1) {
-    sprite_delete(global.CustomMapCollisionSprite);
-  }
-  global.CustomMapCollisionSprite = sprite_create_from_surface(walkmaskSurface, 0, 0, surface_get_width(walkmaskSurface), surface_get_height(walkmaskSurface), true, true, 0, 0);
+  var tempfile;
+    tempfile = temp_directory + "/wallmask.png";
+  if file_exists(tempfile) file_delete(tempfile);
+    surface_save(walkmaskSurface,tempfile);
+    global.CustomMapCollisionSprite=sprite_add(tempfile,1,1,0,0,0);
+    file_delete(tempfile);
+    surface_free(walkmaskSurface);
     draw_text_transformed(200,200,"LOADING...",2,2,0)
-  surface_free(walkmaskSurface);
-  screen_refresh()
+    screen_refresh()
 
   // grab the entity data
   a = string_pos(ENTITYTAG, argument0);
