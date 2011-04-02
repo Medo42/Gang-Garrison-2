@@ -32,6 +32,9 @@
   screen_refresh()
   io_handle()
   // convert it to a sprite, and delete the surface
+  if(global.CustomMapCollisionSprite != -1) {
+    sprite_delete(global.CustomMapCollisionSprite); 	
+  } 
   var tempfile;
     tempfile = temp_directory + "/wallmask.png";
   if file_exists(tempfile) file_delete(tempfile);
