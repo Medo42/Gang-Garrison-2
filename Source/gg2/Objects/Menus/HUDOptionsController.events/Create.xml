@@ -24,14 +24,15 @@
     ybegin = 170;
     spacing = 30;
     width = 300; 
-    items = 4;
+    items = 5;
     valueoffset = 300;
     editing = -1;
     
     item[0] = "Timer Position";
     item[1] = "Kill Log Position";
     item[2] = "KOTH Timer Orientation";
-    item[3] = "Back";
+    item[3] = "Respawn Timer"
+    item[4] = "Back";
     
       
     if(global.timerPos) {
@@ -51,7 +52,13 @@
     } else {
         value[2] = "Default";
     }
-    value[3] = "";
+    
+    if(global.respawnHud) {
+        value[3] = "Enabled";
+    } else {
+        value[3] = "Disabled";
+    }
+    value[4] = "";
 
 }
 </argument>

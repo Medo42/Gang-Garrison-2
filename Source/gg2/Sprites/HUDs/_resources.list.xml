@@ -45,6 +45,7 @@
   <resource name="IntelArrowS" type="RESOURCE"/>
   <resource name="ReflectedRocketS" type="RESOURCE"/>
   <resource name="ReflectedStickyS" type="RESOURCE"/>
+  <resource name="RespawnTimerS_old" type="RESOURCE"/>
   <resource name="RespawnTimerS" type="RESOURCE"/>
   <resource name="infinity" type="RESOURCE"/>
   <resource name="NemesisS" type="RESOURCE"/>
