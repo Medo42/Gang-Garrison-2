@@ -4,6 +4,8 @@
   <resource name="sendEventGrabIntel" type="RESOURCE"/>
   <resource name="doEventScoreIntel" type="RESOURCE"/>
   <resource name="sendEventScoreIntel" type="RESOURCE"/>
+  <resource name="doEventReturnIntel" type="RESOURCE"/>
+  <resource name="sendEventReturnIntel" type="RESOURCE"/>
   <resource name="doEventGeneratorDestroy" type="RESOURCE"/>
   <resource name="sendEventGeneratorDestroy" type="RESOURCE"/>
   <resource name="doEventPlayerDeath" type="RESOURCE"/>

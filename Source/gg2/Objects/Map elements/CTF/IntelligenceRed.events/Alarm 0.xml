@@ -13,10 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    x = IntelligenceBaseRed.x;
-    y = IntelligenceBaseRed.y;
-}</argument>
+        <argument kind="STRING">if (global.isHost){
+    doEventReturnIntel(TEAM_RED)
+    sendEventReturnIntel(TEAM_RED)
+}
+</argument>
       </arguments>
     </action>
   </actions>

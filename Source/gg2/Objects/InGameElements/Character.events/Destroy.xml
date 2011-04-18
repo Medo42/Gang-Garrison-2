@@ -36,11 +36,19 @@
                 newIntel.x = IntelligenceBaseBlue.x;
                 newIntel.y = IntelligenceBaseBlue.y;
                 newIntel.alarm[0] = -1;
+                if global.isHost=true{
+                doEventReturnIntel(TEAM_BLUE)
+                sendEventReturnIntel(TEAM_BLUE)
+                }
             }
             else if (team == TEAM_BLUE) {
                 newIntel.x = IntelligenceBaseRed.x;
                 newIntel.y = IntelligenceBaseRed.y;
                 newIntel.alarm[0] = -1;
+                if global.isHost=true{
+                doEventReturnIntel(TEAM_RED)
+                sendEventReturnIntel(TEAM_RED)
+                }
             }
         }
         sound_play(IntelDropSnd);

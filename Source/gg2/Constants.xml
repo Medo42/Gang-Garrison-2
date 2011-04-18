@@ -24,6 +24,7 @@
   <constant name="GRAB_INTEL" value="19"/>
   <constant name="SCORE_INTEL" value="20"/>
   <constant name="DROP_INTEL" value="21"/>
+  <constant name="RETURN_INTEL" value="43"/>
   <constant name="UBER_CHARGED" value="22"/>
   <constant name="UBER" value="23"/>
   <constant name="OMNOMNOMNOM" value="24"/>

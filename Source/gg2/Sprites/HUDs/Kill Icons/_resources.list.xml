@@ -21,6 +21,8 @@
   <resource name="BlueDefenseS" type="RESOURCE"/>
   <resource name="RedCaptureS" type="RESOURCE"/>
   <resource name="BlueCaptureS" type="RESOURCE"/>
+  <resource name="RedIntelSL" type="RESOURCE"/>
+  <resource name="BlueIntelSL" type="RESOURCE"/>
   <resource name="ScatterKL" type="RESOURCE"/>
   <resource name="RocketKL" type="RESOURCE"/>
   <resource name="FlameKL" type="RESOURCE"/>
