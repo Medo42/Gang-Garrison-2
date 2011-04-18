@@ -920,12 +920,6 @@ instance_create(0,0,TruefortO);</creationCode>
       <creationCode/>
       <locked>false</locked>
     </instance>
-    <instance>
-      <object>PitFall</object>
-      <position x="2208" y="918"/>
-      <creationCode/>
-      <locked>false</locked>
-    </instance>
   </instances>
   <tiles/>
   <editorSettings remember="false"/>
