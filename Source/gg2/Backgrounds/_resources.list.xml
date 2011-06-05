@@ -20,4 +20,6 @@
   <resource name="CustomMapB" type="RESOURCE"/>
   <resource name="popupBackgroundB" type="RESOURCE"/>
   <resource name="OldfortB" type="RESOURCE"/>
+  <resource name="AtaliaB" type="RESOURCE"/>
+  <resource name="BedrockB" type="RESOURCE"/>
 </resources>

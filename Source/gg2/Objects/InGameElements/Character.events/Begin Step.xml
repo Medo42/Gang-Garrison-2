@@ -52,24 +52,34 @@ if(!taunting and !omnomnomnom)
         image_speed=tauntspeed;
     } 
     
-    if(pressedKeys &amp; $80)
-    {
-        if(!place_free(x,y+1) and place_free(x,y))
+    if(keyState &amp; $80){
+        if(pressedKeys &amp; $80)
         {
-            if(not stabbing)
+            if(!place_free(x,y+1) and place_free(x,y))
             {
+                if(!stabbing)
+                {
+                    playsound(x,y,JumpSnd);
+                    vspeed = -jumpStrength;
+                    jumpUsed = 1;
+                }
+            }
+            else if(canDoublejump and !doublejumpUsed and vspeed &gt; -jumpStrength)
+            {
+                vspeed = -jumpStrength;
+                playsound(x,y,JumpSnd);
+                doublejumpUsed = 1;
+                jumpUsed = 1;
+                moveStatus = 0;
+            }
+        } else if (!jumpUsed and !place_free(x,y+1) and place_free(x,y)) {
+            if (!stabbing) {
                 playsound(x,y,JumpSnd);
                 vspeed = -jumpStrength;
+                jumpUsed = 1;
             }
         }
-        else if(canDoublejump and !doublejumpUsed and vspeed &gt; -jumpStrength)
-        {
-            vspeed = -jumpStrength;
-            playsound(x,y,JumpSnd);
-            doublejumpUsed = 1;
-            moveStatus = 0;
-        }
-    }
+    } else { jumpUsed = 0; }
        
     if((keyState | pressedKeys) &amp; $10)
         with(currentWeapon) event_user(1);
@@ -203,8 +213,8 @@ if intel {
     
 animationImage = (animationImage+abs(hspeed)/20) mod CHARACTER_ANIMATION_LEN;
     
-// drop intel if ubered
-if(intel) &amp;&amp; ubered {
+// drop intel if ubered or round is over
+if(intel) &amp;&amp; (ubered || global.mapchanging){
     event_user(5);
 }
 
@@ -230,6 +240,30 @@ if ubered {
     }
 }
 
+//give max ammo for players on the winning team
+var arenaRoundEnd;
+arenaRoundEnd = true;
+if instance_exists(ArenaHUD) { 
+    if(ArenaHUD.endCount!=0) 
+        arenaRoundEnd=true;
+    else arenaRoundEnd=false;
+}
+if (arenaRoundEnd and global.mapchanging and !player.humiliated) {
+    if instance_exists(currentWeapon) {
+        with(currentWeapon){
+            if(variable_local_exists("maxAmmo")) {
+                ammoCount = maxAmmo;
+            }
+            alarm[5] = -1;
+        }
+    }
+}
+
+//drop cloak, scope, and rifle if on losing team or stalemate
+if (player.humiliated) {
+    zoomed = false;
+    if (!stabbing) cloak = false;
+}
 // Determine if the character is capturing a CP, and which
 var zone;
 zone = collision_point(x,y,CaptureZone,0,0);

@@ -17,4 +17,6 @@
   <resource name="Harvest" type="RESOURCE"/>
   <resource name="CustomMapRoom" type="RESOURCE"/>
   <resource name="Oldfort" type="RESOURCE"/>
+  <resource name="Atalia" type="RESOURCE"/>
+  <resource name="Bedrock" type="RESOURCE"/>
 </resources>

@@ -60,6 +60,12 @@
         case "ctf_2dfort2000":
             room_goto_fix(TwodFortTwoRemix);
             break;
+        case "dkoth_atalia":
+            room_goto_fix(Atalia);
+            break;
+        case "dkoth_bedrock":
+            room_goto_fix(Bedrock);
+            break;
         default:
             return -1;
             exit;

@@ -18,4 +18,6 @@
   <resource name="HarvestO" type="RESOURCE"/>
   <resource name="OldfortO" type="RESOURCE"/>
   <resource name="CustomMapO" type="RESOURCE"/>
+  <resource name="AtaliaO" type="RESOURCE"/>
+  <resource name="BedrockO" type="RESOURCE"/>
 </resources>

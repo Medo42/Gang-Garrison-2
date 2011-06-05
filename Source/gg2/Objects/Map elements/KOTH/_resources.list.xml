@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="KothControlPoint" type="RESOURCE"/>
+  <resource name="KothRedControlPoint" type="RESOURCE"/>
+  <resource name="KothBlueControlPoint" type="RESOURCE"/>
 </resources>
