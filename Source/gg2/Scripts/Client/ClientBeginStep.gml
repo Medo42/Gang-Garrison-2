@@ -264,28 +264,12 @@ do {
               } 
             }
             break;
-      
-        case SCOPE_IN:
-            receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
-            player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
-            if player.object != -1 {
-                with player.object {
-                    zoomed = true;
-                    runPower = 0.6;
-                    jumpStrength = 6;
-                }
-            }
-            break;
             
-        case SCOPE_OUT:
+        case TOGGLE_ZOOM:
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
             if player.object != -1 {
-                with player.object {
-                    zoomed = false;
-                    runPower = 0.9;
-                    jumpStrength = 8;
-                }
+                player.object.zoomed = !player.object.zoomed;
             }
             break;
                                          
@@ -335,12 +319,14 @@ do {
             receiveCompleteMessage(global.serverSocket,2,global.tempBuffer);
             global.winners=read_ubyte(global.tempBuffer);
             global.currentMapArea=read_ubyte(global.tempBuffer);
+            global.mapchanging = 1;
             if !instance_exists(ScoreTableController) instance_create(0,0,ScoreTableController);
             instance_create(0,0,WinBanner);
             break;
 
         case CHANGE_MAP:
             roomchange=true;
+            global.mapchanging = 0
             global.currentMap = receivestring(global.serverSocket, 1);
             global.currentMapURL = receivestring(global.serverSocket, 1);
             global.currentMapMD5 = receivestring(global.serverSocket, 1);

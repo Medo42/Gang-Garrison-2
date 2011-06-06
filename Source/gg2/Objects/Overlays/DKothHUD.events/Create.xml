@@ -13,31 +13,27 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if(global.winners == TEAM_RED) {
-    teamoffset = 0;
-} else if(global.winners == TEAM_BLUE) {
-    teamoffset = 1;
-} else {
-    teamoffset = 2;
+        <argument kind="STRING">redTimer = 180*30;
+blueTimer = 180*30;
+cpUnlock = 900;
+hostTimer = global.timeLimitMins*30*60;
+//teamoffset = 0;
+//xshift=-320*global.timerPos
+//yshift=5*global.timerPos
+global.totalControlPoints = 2;
+
+if (global.kothHudPos) {
+    coffset=0
+    xshift=-323*global.timerPos
+    yshift=35*global.kothHudPos
+}else {
+    coffset=43*1.15
+    xshift=-290*global.timerPos
+    yshift=35*global.kothHudPos
 }
 
-if(global.myself.team != global.winners) {
-    sound=FailureSnd;
-    global.myself.humiliated = 1;
-} else {
-    sound = VictorySnd;
-}
-
-with (Player) {
-    if team == global.winners
-        humiliated = 0;
-    else
-        humiliated = 1;
-}
-
-if(!instance_exists(ArenaHUD)) {
-    AudioControlPlaySong(sound, false);
-}
+KothRedControlPoint.team = TEAM_RED;
+KothBlueControlPoint.team = TEAM_BLUE;
 </argument>
       </arguments>
     </action>

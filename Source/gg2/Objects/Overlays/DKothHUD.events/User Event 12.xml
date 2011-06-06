@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="COLLISION" with="IntelligenceRed">
+<event category="OTHER" id="22">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,13 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// Intelligence grabbing is synced now, so it's only tested on the server
-if(global.isHost and !global.mapchanging) {
-    if(team == TEAM_BLUE and !place_meeting(x,y,TeamGate) and canGrabIntel == 1 and ubered == 0 and !cloak) {
-        sendEventGrabIntel(player);
-        doEventGrabIntel(player);
-    }
-}
+        <argument kind="STRING">write_ushort(global.serializeBuffer, cpUnlock);
+write_ushort(global.serializeBuffer, redTimer);
+write_ushort(global.serializeBuffer, blueTimer);
+with KothRedControlPoint event_user(12);
+with KothBlueControlPoint event_user(12);
+
 </argument>
       </arguments>
     </action>

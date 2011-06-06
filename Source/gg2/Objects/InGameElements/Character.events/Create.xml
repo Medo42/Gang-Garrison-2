@@ -27,6 +27,7 @@
     intel = false;
     taunting = false;
     doublejumpUsed = 0;
+    jumpUsed = 0;
     ubered = 0;
     stabbing = 0;
     onCabinet = 0;

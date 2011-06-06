@@ -63,7 +63,6 @@ while(true) {
             class = read_ubyte(socket);
             if(getCharacterObject(player.team, class) != -1)
             {
-                player.class = class;
                 if(player.object != -1)
                 {
                     with(player.object)
@@ -78,11 +77,10 @@ while(true) {
                             else
                             {
                                 var assistant;
-                                assistant = -1;
-                                if (lastDamageDealer.object.healer != -1)
-                                    assistant = lastDamageDealer.object.healer;
-                                else
-                                    assistant = secondToLastDamageDealer;
+                                assistant = secondToLastDamageDealer;
+                                if (lastDamageDealer.object != -1)
+                                    if (lastDamageDealer.object.healer != -1)
+                                        assistant = lastDamageDealer.object.healer;
                                 sendEventPlayerDeath(player, lastDamageDealer, assistant, FINISHED_OFF);
                                 doEventPlayerDeath(player, lastDamageDealer, assistant, FINISHED_OFF);
                             }
@@ -93,6 +91,7 @@ while(true) {
                 }
                 else if(player.alarm[5]<=0)
                     player.alarm[5] = 1;
+                player.class = class;
                 ServerPlayerChangeclass(playerId, player.class, global.sendBuffer);
             }
             break;
@@ -132,11 +131,10 @@ while(true) {
                             else
                             {
                                 var assistant;
-                                assistant = -1;
-                                if (lastDamageDealer.object.healer != -1)
-                                    assistant = lastDamageDealer.object.healer;
-                                else
-                                    assistant = secondToLastDamageDealer;
+                                assistant = secondToLastDamageDealer;
+                                if (lastDamageDealer.object != -1)
+                                    if (lastDamageDealer.object.healer != -1)
+                                        assistant = lastDamageDealer.object.healer;
                                 sendEventPlayerDeath(player, lastDamageDealer, assistant, FINISHED_OFF);
                                 doEventPlayerDeath(player, lastDamageDealer, assistant, FINISHED_OFF);
                             }
@@ -219,33 +217,15 @@ while(true) {
             }
             break;
              
-        case SCOPE_IN:
-             if player.object != -1 {
+        case TOGGLE_ZOOM:
+            if player.object != -1 {
                 if player.class == CLASS_SNIPER {
-                   write_ubyte(global.sendBuffer, SCOPE_IN);
-                   write_ubyte(global.sendBuffer, playerId);
-                   with player.object {
-                        zoomed = true;
-                        runPower = 0.6;
-                        jumpStrength = 6;
-                   }
+                    write_ubyte(global.sendBuffer, TOGGLE_ZOOM);
+                    write_ubyte(global.sendBuffer, playerId);
+                    player.object.zoomed = !player.object.zoomed;
                 }
-             }
-             break;
-                
-        case SCOPE_OUT:
-             if player.object != -1 {
-                if player.class == CLASS_SNIPER {
-                   write_ubyte(global.sendBuffer, SCOPE_OUT);
-                   write_ubyte(global.sendBuffer, playerId);
-                   with player.object {
-                        zoomed = false;
-                        runPower = 0.9;
-                        jumpStrength = 8;
-                   }
-                }
-             }
-             break;
+            }
+            break;
                                                       
         case PASSWORD_SEND:
             password = read_string(socket, socket_receivebuffer_size(socket));
