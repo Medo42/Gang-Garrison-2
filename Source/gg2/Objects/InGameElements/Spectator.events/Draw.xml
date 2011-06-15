@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="605" library="1">
+      <!--action name: Comment-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>NONE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">Respawn Timer</argument>
+      </arguments>
+    </action>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">    xoffset = view_xview;
+    yoffset = view_yview;
+    xsize = view_wview;
+    ysize = view_hview;
+    if (global.myself.object == -1) and (global.myself.team != TEAM_SPECTATOR) and (global.myself.humiliated = 0) 
+    and !(instance_exists(ArenaHUD)) and (global.myself.alarm[5] &gt; 2) and (global.respawnHud)
+    {
+    var timeLeft;
+    timeLeft=ceil(global.myself.alarm[5]/30);
+        draw_set_halign(fa_center);
+        draw_set_color(c_white);
+        draw_set_alpha(1);
+        depth=-120000
+        draw_sprite_ext(RespawnTimerS, 0,xoffset+xsize/2, yoffset+ysize-520,3,3,0, c_white, 1);
+        
+        draw_text_transformed(xoffset+xsize/2, yoffset+ysize -520, "Respawning in: "+string(timeLeft),1,1,0);
+    }
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

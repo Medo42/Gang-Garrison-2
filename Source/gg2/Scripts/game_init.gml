@@ -47,9 +47,10 @@
     global.showHealing = ini_read_real("Settings", "Show Healing",1);
     global.showHealthBar = ini_read_real("Settings", "Show Healthbar",0);
     //user HUD settings
-    global.timerPos=ini_read_real("Settings","Timer Position", 0)
-    global.killLogPos=ini_read_real("Settings","Kill Log Position", 0)
-    global.kothHudPos=ini_read_real("Settings","KoTH HUD Position", 0)
+    global.timerPos=ini_read_real("Settings","Timer Position", 0);
+    global.killLogPos=ini_read_real("Settings","Kill Log Position", 0);
+    global.kothHudPos=ini_read_real("Settings","KoTH HUD Position", 0);
+    global.respawnHud=ini_read_real("Settings","Respawn HUD",1);
     global.clientPassword = "";
     // for admin menu
     customMapRotationFile = ini_read_string("Server", "MapRotation", "");
@@ -84,6 +85,7 @@
     ini_write_real("Settings","Timer Position", global.timerPos)
     ini_write_real("Settings","Kill Log Position", global.killLogPos)
     ini_write_real("Settings","KoTH HUD Position", global.kothHudPos)
+    ini_write_real("Settings","Respawn HUD",global.respawnHud)
     ini_write_string("Server", "MapRotation", customMapRotationFile);
     ini_write_real("Server", "Dedicated", global.dedicatedMode);
     ini_write_string("Server", "ServerName", global.serverName);
