@@ -1,7 +1,10 @@
-var player, playerId;
+var player, playerId, commandLimitRemaining;
 
 player = argument0;
 playerId = argument1;
+
+// To prevent players from flooding the server, limit the number of commands to process per step and player.
+commandLimitRemaining = 10;
 
 with(player) {
     if(!variable_local_exists("commandReceiveState")) {
@@ -14,7 +17,7 @@ with(player) {
     }
 }
 
-while(true) {
+while(commandLimitRemaining > 0) {
     var socket;
     socket = player.socket;
     if(!tcp_receive(socket, player.commandReceiveExpectedBytes)) {
@@ -50,6 +53,7 @@ while(true) {
     case 2:
         player.commandReceiveState = 0;
         player.commandReceiveExpectedBytes = 1;
+        commandLimitRemaining -= 1;
         
         switch(player.commandReceiveCommand)
         {
@@ -217,33 +221,15 @@ while(true) {
             }
             break;
              
-        case SCOPE_IN:
-             if player.object != -1 {
+        case TOGGLE_ZOOM:
+            if player.object != -1 {
                 if player.class == CLASS_SNIPER {
-                   write_ubyte(global.sendBuffer, SCOPE_IN);
-                   write_ubyte(global.sendBuffer, playerId);
-                   with player.object {
-                        zoomed = true;
-                        runPower = 0.6;
-                        jumpStrength = 6;
-                   }
+                    write_ubyte(global.sendBuffer, TOGGLE_ZOOM);
+                    write_ubyte(global.sendBuffer, playerId);
+                    toggleZoom(player.object);
                 }
-             }
-             break;
-                
-        case SCOPE_OUT:
-             if player.object != -1 {
-                if player.class == CLASS_SNIPER {
-                   write_ubyte(global.sendBuffer, SCOPE_OUT);
-                   write_ubyte(global.sendBuffer, playerId);
-                   with player.object {
-                        zoomed = false;
-                        runPower = 0.9;
-                        jumpStrength = 8;
-                   }
-                }
-             }
-             break;
+            }
+            break;
                                                       
         case PASSWORD_SEND:
             password = read_string(socket, socket_receivebuffer_size(socket));
