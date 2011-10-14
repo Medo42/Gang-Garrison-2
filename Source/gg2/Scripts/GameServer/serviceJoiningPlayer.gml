@@ -41,8 +41,9 @@ switch(state)
 case STATE_EXPECT_HELLO:
     var sameProtocol, noOfPlayers;
     sameProtocol = (read_ubyte(socket) == HELLO);
-    for(i=0; i<16; i+=1)
-        if(read_ubyte(socket) != global.protocolUuid[i])
+    buffer_set_readpos(global.protocolUuid, 0)
+    for(i=0; i<4; i+=1)
+        if(read_uint(socket) != read_uint(global.protocolUuid))
             sameProtocol = false;
             
     if(!sameProtocol)
@@ -135,7 +136,7 @@ case STATE_EXPECT_NAME:
     player.socket = socket;
     socket = -1; // Prevent the socket from being destroyed with the JoiningPlayer - it belongs to the Player now.
     
-    player.name = read_string(socket, expectedBytes);
+    player.name = read_string(player.socket, expectedBytes);
     player.name = string_copy(player.name, 0, MAX_PLAYERNAME_LENGTH);
     player.name = string_replace_all(player.name, "#", " ");
     
