@@ -55,18 +55,17 @@
                     ownerPlayer.roundStats[HEALING] += healthGained;
                     
                     
-                    if(ubering == false &amp;&amp; uberCharge&lt;2000){
-                        uberCharge+=1;
+                    if(ubering == false &amp;&amp; uberCharge&lt;2400){
                         var setup;
                         setup = false;
                         if instance_exists(ControlPointSetupGate) {
                             if (ControlPointSetupGate.solid)
                                 setup = true;
                         }
-                        if(healTarget.object.hp &lt; healTarget.object.maxHp or setup) uberCharge += 0.5;
-                        if(healTarget.object.hp &lt; healTarget.object.maxHp/2 or setup) uberCharge += 1;
-                        if(uberCharge &gt;= 2000) {
-                            uberCharge = 2000;
+                        if(healTarget.object.hp = healTarget.object.maxHp or setup) uberCharge += 1.6;
+                        if(healTarget.object.hp &lt; healTarget.object.maxHp or setup) uberCharge += (24/35);
+                        if(uberCharge &gt;= 2400) {
+                            uberCharge = 2400;
                             if(global.isHost) {
                                 sendEventUberReady(ownerPlayer);
                                 doEventUberReady(ownerPlayer);
