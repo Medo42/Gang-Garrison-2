@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="DESTROY" id="0">
+<event category="MOUSE" id="54">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,23 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">with(LobbyRightClickMenu)
-{
-    instance_destroy();
-}
-
-with (LobbyServerTracker)
-{
-    server = -1;
-}
-
-with(Server)
-{
-    instance_destroy();
-}
-
-socket_destroy(lobbysocket);
-ds_list_destroy(servers);
+        <argument kind="STRING">instance_destroy();
 </argument>
       </arguments>
     </action>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// x and y is where the user clicked.
+// server is the chosen server
+
+if numItems &lt;= 0
+{
+    exit;
+}
+
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
+
+draw_set_alpha(0.95);
+
+var color_backgroundGray, color_highlightGray;
+color_backgroundGray = make_color_rgb(50, 50, 50);// Change at will
+color_highlightGray = make_color_rgb(20, 20, 20);// Change at will
+color_borderGray = make_color_rgb(130, 130, 130)// Change at will
+
+draw_set_color(color_backgroundGray);// Draw the background
+draw_rectangle(x, y, x+width, y+height, 0);
+
+var sizeOfCompartiment;
+sizeOfCompartiment = (height)/numItems
+
+draw_set_alpha(1);
+var tempY;
+
+if virtualItem != -1// If you are hovering over something, draw the highlight-color there
+{
+    tempY = (height)*virtualItem/numItems;// Get the height of the marked text
+    draw_set_color(color_highlightGray);
+    draw_rectangle(x, y+tempY, x+width, y+tempY+(sizeOfCompartiment), 0);
+}
+
+draw_set_color(c_white);// Draw the text
+for (i=0; i&lt;numItems; i+=1)
+{
+    tempY = (i+3/20)*sizeOfCompartiment;// The height of each text; 3/20 == offset so text isn't drawn at top edge of each compartiment
+    draw_text(x+10, y+tempY, item[i]);
+}
+
+draw_set_color(color_borderGray);
+draw_rectangle(x, y, x+width, y+height, 1);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

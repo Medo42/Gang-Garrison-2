@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">numItems = 2;
+virtualItem = -1;
+server = noone;
+destroy = 0;
+
+// TO ADD ITEMS TO THE MENU:
+// 1. add them here
+// 2. change numItems at the top of this script to the new number of items
+// 3. add user defined events corresponding to the item number of your new options.
+// The drawing will do it's part itself
+item[0] = "Join as soon as free";
+item[1] = "Get Server Information";
+
+width = 0;
+height = 0;
+for (i=0; i&lt;numItems; i+=1)// Sets width to the width of the longest option, and height to the height of all the strings together.
+{                          // Used later in Drawing.
+    width = max(width, string_width(item[i]));
+    height += string_height(item[i]);
+}
+
+width += 20;// Arbitrary. Change if necessary
+height += 25;// This too
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

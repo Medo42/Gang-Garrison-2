@@ -89,7 +89,6 @@ if(keybyte != 0
         or keyboard_check(global.down)) {
     afktimer=afktimeout;
 }
-
 </argument>
       </arguments>
     </action>

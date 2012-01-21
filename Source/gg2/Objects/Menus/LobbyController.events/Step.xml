@@ -107,7 +107,11 @@
         } else {
             virtualitem += offset;
         }
-        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0){
+        if(mouse_check_button_pressed(mb_left) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0 and not instance_exists(LobbyRightClickMenu)){
+            with LobbyServerTracker
+            {
+                instance_destroy();
+            }
             server = ds_list_find_value(servers, virtualitem);
             if(server.compatible)
             {            
@@ -151,6 +155,15 @@
                 {
                     show_message(question);
                 }
+            }
+        }
+        else if (mouse_check_button_pressed(mb_right) and virtualitem&lt;ds_list_size(servers) and virtualitem&gt;=0){
+        server = ds_list_find_value(servers, virtualitem);
+            if(server.compatible)
+            {
+                var menu;     
+                menu = instance_create(mouse_x, mouse_y, LobbyRightClickMenu)
+                menu.server = server
             }
         }
     } else {

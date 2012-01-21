@@ -43,6 +43,25 @@ for(i=offset; i&lt;ds_list_size(servers) and i&lt;offset+items; i+=1) {
         draw_set_color(c_gray);
     }
     
+    if instance_exists(LobbyRightClickMenu)
+    {
+        if LobbyRightClickMenu.server == server
+        {
+            draw_set_color(c_red);
+        }
+        else
+        {
+            if(server.compatible)
+            {
+                draw_set_color(c_white);
+            }
+            else
+            {
+                draw_set_color(c_gray);
+            }
+        }
+    }
+    
     draw_set_halign(fa_left);
     if(server.private)
         draw_sprite(ControlPointLockS,0,xbegin,ybegin+spacing*(i-offset)+5);

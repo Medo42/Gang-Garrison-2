@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="11">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">instance_destroy();
+
+var question;
+question = "Server Information:##";
+question += "Server: " + string_replace(ds_map_find_value(server.infos, "name"), "#", "\#")+"#";
+question += "IP: " + string(server.ip)+"#";// Added IP because why not.
+if(ds_map_exists(server.infos, "bots"))
+    question += "Number of Bots: " + string(ds_map_find_value(server.infos, "bots")) + "#"
+if(ds_map_exists(server.infos, "game"))
+    question += "Game/Mod: " + string_replace(ds_map_find_value(server.infos, "game"), "#", "\#")+"#";
+if(ds_map_exists(server.infos, "game_ver"))
+    question += "Version: " + string_replace(ds_map_find_value(server.infos, "game_ver"), "#", "\#")+"#";
+if(ds_map_exists(server.infos, "game_url"))
+{
+    var gameurl, reallyvisit;
+    gameurl = string_replace(ds_map_find_value(server.infos, "game_url"), "#", "\#");
+    question += "Website: " + gameurl + "##Do you want to visit this website now?";
+    if(show_question(question))
+        if(show_question("Warning: The website link is provided by the game server you selected and could lead anywhere.#Really visit '"+gameurl+"'?"))
+            action_splash_web(ds_map_find_value(server.infos, "game_url"), 1);
+}
+else
+{
+    show_message(question);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>
