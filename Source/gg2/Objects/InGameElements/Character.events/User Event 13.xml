@@ -20,7 +20,7 @@
     
     var temp, newIntel;
     if(global.updateType == QUICK_UPDATE) or (global.updateType == FULL_UPDATE) {
-        receiveCompleteMessage(global.serverSocket,9,global.deserializeBuffer);
+        receiveCompleteMessage(global.serverSocket,8,global.deserializeBuffer);
         x = read_ushort(global.deserializeBuffer)/5;
         y = read_ushort(global.deserializeBuffer)/5;
         hspeed = read_byte(global.deserializeBuffer)/5;
@@ -29,12 +29,15 @@
         yprevious = y;
         
         hp = read_ubyte(global.deserializeBuffer);
-        currentWeapon.ammoCount = read_ubyte(global.deserializeBuffer);
         
         temp = read_ubyte(global.deserializeBuffer);
         cloak = (temp &amp; $01 != 0);
         newIntel = (temp &amp; $02 != 0);
-        moveStatus = (temp &gt;&gt; 2) &amp; $07;
+        currentWeapon.readyToShoot = (temp &amp; $04 !=0);
+        moveStatus = (temp &gt;&gt; 3) &amp; $07;
+        player.ammoByte |= ((temp &amp; $C0)) ;
+        currentWeapon.ammoCount = player.ammoByte;
+        player.ammoByte=0;
         // Drop the intel if intel changes from true to false, destroy the intel when if changes from false to true
         // This is more of a workaround to keep 2.1.2 compatible with 2.1.1, it should be solved later by
         // fully syncing intel drop.
