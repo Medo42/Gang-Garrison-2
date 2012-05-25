@@ -13,17 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(20, 150, 100, 100, 30);
-
-menu_addlink("Refresh", '
-    event_user(0);
-');
-menu_addback("Back", '
-    room_goto_fix(Menu);
-');
-
-cooleddown = false;
-alarm[1] = 90;
+        <argument kind="STRING">show_error("The Create event needs to be overridden in all child objects.", true);
 </argument>
       </arguments>
     </action>

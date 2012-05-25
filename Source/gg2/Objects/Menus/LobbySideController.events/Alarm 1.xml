@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="CREATE" id="0">
+<event category="ALARM" id="1">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,17 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(20, 150, 100, 100, 30);
-
-menu_addlink("Refresh", '
-    event_user(0);
-');
-menu_addback("Back", '
-    room_goto_fix(Menu);
-');
-
-cooleddown = false;
-alarm[1] = 90;
+        <argument kind="STRING">cooleddown = true;
 </argument>
       </arguments>
     </action>
