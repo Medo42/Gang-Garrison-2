@@ -40,7 +40,7 @@ if(!taunting and !omnomnomnom)
 {
     if((keyState | pressedKeys) &amp; $10)
         with(currentWeapon) event_user(1);
-    if(pressedKeys &amp; $01 !player.humiliated)  {
+    if(pressedKeys &amp; $01 != player.humiliated)  {
         if (!invisible &amp;&amp; cloakAlpha == 1)
             taunting=true;
         if (team==TEAM_RED) {
@@ -188,16 +188,27 @@ if(abs(hspeed)&lt;0.195 /*and not moveStatus = 3*/) { // Overweight carrying int
     animationImage=0;
 }    
     
-if(place_free(x,y+1)) {
-    vspeed += 0.6;
-    if(vspeed&gt;10) {
-        vspeed=10;
+// hardcoded spinjumping
+if(variable_local_exists("oldScale")) // probably not a good idea, but I don't care right now
+{
+    if(oldScale != image_xscale
+        and (!place_free(x+1,y) or !place_free(x-1,y))
+        and ((place_free(x,y+1)) or (!place_free(x,y) and !place_free(x+hspeed,y+vspeed))))
+    {
+        vspeed -= 0.3;
     }
+}
+oldScale = image_xscale;
+// gravity
+if(place_free(x,y+1) or (!place_free(x,y) and !place_free(x+hspeed,y+vspeed))) {
+    vspeed += 0.6;
+    if(vspeed&gt;10)
+        vspeed=10;
     animationImage = 1;
 } else {
-    if(place_free(x,y)) {
+    // prevent spinning against wall from resetting doublejump
+    if(place_free(x,y))
         doublejumpUsed = 0;
-    }
 }
 
 if (intel)
