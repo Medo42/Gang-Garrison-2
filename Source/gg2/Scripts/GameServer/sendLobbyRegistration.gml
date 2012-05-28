@@ -25,7 +25,7 @@ writeKeyValue(lobbyBuffer, "name", global.serverName);
 writeKeyValue(lobbyBuffer, "game", "Gang Garrison 2");
 writeKeyValue(lobbyBuffer, "game_short", "gg2");
 writeKeyValue(lobbyBuffer, "game_ver", GAME_VERSION_STRING);
-writeKeyValue(lobbyBuffer, "game_url", "http://www.ganggarrison.com/forums/index.php?topic=31231");
+writeKeyValue(lobbyBuffer, "game_url", "http://www.ganggarrison.com/forums/index.php?topic=31977.msg1080288#msg1080288");
 writeKeyValue(lobbyBuffer, "map", global.currentMap);
 write_ubyte(lobbyBuffer, string_length("protocol_id"));
 write_string(lobbyBuffer, "protocol_id");
