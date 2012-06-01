@@ -1,0 +1,2 @@
+Version
+24300!Version 2.4.3 has been released!#Changes:##- Plugin loading (.gml files in Plugins folder will be run at startup)#- When spectating, server hosts can kick players on scoreboard#- Multistab#- Rocketjump bug fixed#- Flares and bubbles collide#- After uncloaking, must wait 1s to grab intel#- Removed sentry build menu#- Added server welcome message support
