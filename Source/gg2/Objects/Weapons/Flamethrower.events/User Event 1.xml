@@ -46,6 +46,13 @@
             alarm[0]=refireTime;
         else
             alarm[0]=reloadBuffer*2;
+        //Recoil Animation
+        if sprite_index != recoilSprite {
+            sprite_index = recoilSprite
+            
+        }
+        image_speed = reloadImageSpeed
+        alarm[6] = recoilTime;
     }
 }
 </argument>
