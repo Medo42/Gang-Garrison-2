@@ -36,13 +36,6 @@
         ammoCount -= 2.2;
         alarm[0] = refireTime;
         alarm[5] = reloadBuffer;
-        //Recoil Animation
-        if sprite_index != recoilSprite {
-            sprite_index = recoilSprite
-            
-        }
-        image_speed = reloadImageSpeed
-        alarm[6] = recoilTime;
     }
     
 }
