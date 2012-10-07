@@ -29,6 +29,7 @@
     alarm[2] = flareReloadTime;
     readyToBlast = false;
     readyToFlare = false;
+    justBlast = false;
     
     maxAmmo = 200;
     ammoCount = maxAmmo;
@@ -38,6 +39,24 @@
     reloadBuffer = 7;
     isRefilling = false;
     
+    hasRecoil = true;
+    //play at least 2 frames
+    recoilTime = 3;
+    recoilSprite = FlamethrowerFS;
+    normalSprite = FlamethrowerS;
+    dropSprite = FlamethrowerDropS;
+    blastSprite = FlamethrowerBlastS;
+    dropTime = 4
+    sprite_index = recoilSprite
+    recoilAnimLength = image_number/2
+    recoilImageSpeed = recoilAnimLength/recoilTime
+    sprite_index = blastSprite
+    blastAnimLength = image_number/2
+    blastImageSpeed = blastAnimLength/blastNoFlameTime
+    sprite_index = dropSprite
+    dropAnimLength = image_number/2
+    dropImageSpeed = dropAnimLength/blastNoFlameTime
+    sprite_index = normalSprite
 }
 </argument>
       </arguments>

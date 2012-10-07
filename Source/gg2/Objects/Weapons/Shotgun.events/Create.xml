@@ -16,12 +16,21 @@
         <argument kind="STRING">{
     xoffset=-5;
     yoffset=-2;
-    refireTime=20;
+    refireTime = 20;
     maxAmmo = 6;
     ammoCount = maxAmmo;
     reloadTime = 15;
     reloadBuffer = 20;
     idle=true;
+    
+    hasRecoil = true;
+    normalSprite = ShotgunS
+    recoilSprite = ShotgunFS
+    recoilTime = refireTime;
+    sprite_index = recoilSprite
+    recoilAnimLength = image_number/2
+    recoilImageSpeed = recoilAnimLength/recoilTime
+    sprite_index = normalSprite
 }
 </argument>
       </arguments>
