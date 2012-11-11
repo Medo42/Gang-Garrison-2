@@ -1,0 +1,6 @@
+# Disable LF normalization for all files
+* -text
+
+
+# Declare files that will always have CRLF line endings on checkout.
+*.gml text eol=crlf

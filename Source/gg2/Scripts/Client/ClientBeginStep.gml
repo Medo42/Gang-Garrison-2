@@ -203,6 +203,12 @@ do {
                 global.playerName=player.name
             }
             break;
+            
+        case CHAT_PUBLIC_MESSAGE:
+            var message, length;
+            message = receivestring(global.serverSocket, 2);
+            print_to_chat(message);
+            break;
                  
         case PLAYER_SPAWN:
             receiveCompleteMessage(global.serverSocket,3,global.tempBuffer);
@@ -293,6 +299,11 @@ do {
             if(player.object != -1) {
                 with(player.object) {
                     omnomnomnom=true;
+                    if(hp < 200)
+                    {
+                        canEat = false;
+                        alarm[6] = eatCooldown; //10 second cooldown
+                    }
                     if(player.team == TEAM_RED) {
                         omnomnomnomindex=0;
                         omnomnomnomend=31;

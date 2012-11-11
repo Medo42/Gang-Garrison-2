@@ -25,6 +25,9 @@ for (i=0; i&lt;=9; i+=1;) {
 tracking=false
 track_id=0;
 player = 0;
+
+
+chatting = false;
 </argument>
       </arguments>
     </action>

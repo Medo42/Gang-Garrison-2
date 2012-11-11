@@ -20,6 +20,7 @@
     canBuild = 0;
     jumpStrength = 8;
     capStrength = 1;
+    intelRecharge = 0;
     
     // 
     flamecount = 0;
@@ -92,6 +93,8 @@
 
     //sandvich
     omnomnomnom = false;
+    canEat = true;
+    eatCooldown = 600;//20 sec cooldown
     
     //sniper zoom
     zoomed = 0;

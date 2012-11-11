@@ -24,8 +24,8 @@ deserialize(IntelligenceBlue);
 
 receiveCompleteMessage(global.serverSocket,4,global.tempBuffer);
       global.caplimit = read_ubyte(global.tempBuffer);
-global.redCaps = read_ubyte(global.tempBuffer);
-global.blueCaps = read_ubyte(global.tempBuffer);
+      global.redCaps = read_ubyte(global.tempBuffer);
+      global.blueCaps = read_ubyte(global.tempBuffer);
       global.Server_RespawntimeSec = read_ubyte(global.tempBuffer);
       global.Server_Respawntime = global.Server_RespawntimeSec * 30;
          
@@ -46,6 +46,12 @@ global.blueCaps = read_ubyte(global.tempBuffer);
         }
         else if instance_exists(DKothHUD) {
             with DKothHUD event_user(13);
+        }
+        
+        receiveCompleteMessage(global.serverSocket, 10, global.tempBuffer);
+        for (a=0; a<10; a+=1)
+        {
+            global.classlimits[a] = read_ubyte(global.tempBuffer);
         }
 }
 
