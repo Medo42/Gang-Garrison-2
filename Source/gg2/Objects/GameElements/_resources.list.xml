@@ -6,4 +6,5 @@
   <resource name="ScrollDownO" type="RESOURCE"/>
   <resource name="SSControl" type="RESOURCE"/>
   <resource name="AudioControl" type="RESOURCE"/>
+  <resource name="Schnee" type="RESOURCE"/>
 </resources>

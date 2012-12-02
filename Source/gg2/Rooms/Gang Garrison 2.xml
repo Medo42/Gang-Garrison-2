@@ -101,6 +101,12 @@
       <creationCode/>
       <locked>false</locked>
     </instance>
+    <instance>
+      <object>Schnee</object>
+      <position x="0" y="0"/>
+      <creationCode/>
+      <locked>false</locked>
+    </instance>
   </instances>
   <tiles/>
   <editorSettings remember="false"/>
