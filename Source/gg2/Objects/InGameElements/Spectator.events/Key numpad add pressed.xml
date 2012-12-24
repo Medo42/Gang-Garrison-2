@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">event_user(7);
+      <argument kind="STRING">
+      if chatting exit;
+	event_user(7);
+>>>>>>> a883a03adf1f01bcab78996b9f7aadd1fc6ce4aa
 </argument>
       </arguments>
     </action>

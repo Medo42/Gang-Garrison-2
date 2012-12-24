@@ -26,6 +26,8 @@ tracking=false
 track_id=0;
 player = noone;
 
+chatting = false;
+
 numpadKeys[0] = vk_numpad0;
 numpadKeys[1] = vk_numpad1;
 numpadKeys[2] = vk_numpad2;

@@ -21,6 +21,11 @@
   <resource name="DeathCamHealthBarS" type="RESOURCE"/>
   <resource name="BubblesS" type="RESOURCE"/>
   <resource name="Boot" type="RESOURCE"/>
+  <resource name="ConsoleS" type="RESOURCE"/>
+  <resource name="ChatboxS" type="RESOURCE"/>
+  <resource name="ChatboxS_old" type="RESOURCE"/>
+  <resource name="ChatS" type="RESOURCE"/>
+  <resource name="SliderS" type="RESOURCE"/>
   <resource name="SpectatorHealthCross" type="RESOURCE"/>
   <resource name="SpectatorHealthFill" type="RESOURCE"/>
 </resources>
