@@ -17,6 +17,7 @@
 timer=timeLimit;
 teamoffset=0;
 overtime = 0;
+startedOvertime = false;
 </argument>
       </arguments>
     </action>
