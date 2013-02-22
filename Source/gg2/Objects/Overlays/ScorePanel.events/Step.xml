@@ -24,17 +24,55 @@ if (!blueIsCapping)
 
 if (timer &gt; 0)
     timer -= 1;
-
-if ((global.redCaps &gt;= global.caplimit) or (global.blueCaps &gt;= global.caplimit) or (timer &lt;= 0))
-    if ((global.redCaps &gt; global.blueCaps) and (!blueIsCapping or global.redCaps &gt;= global.blueCaps + 2))
-        global.winners = TEAM_RED;
-    else if ((global.blueCaps &gt; global.redCaps) and (!redIsCapping or global.blueCaps &gt;= global.redCaps + 2))
-        global.winners = TEAM_BLUE;
-    else if (!redIsCapping and !blueIsCapping and global.blueCaps == global.redCaps)
-        global.winners = TEAM_SPECTATOR;
     
+if ((global.redCaps &gt;= global.caplimit) or (global.blueCaps &gt;= global.caplimit) and !overtime) {
+    if (global.redCaps &gt; global.blueCaps)
+        global.winners = TEAM_RED;
+    else if (global.blueCaps &gt; global.redCaps)
+        global.winners = TEAM_BLUE;
+}
 if (timer &lt;= 0 and global.winners == -1)
     overtime = true;
+if (overtime and !startedOvertime) {
+    //Overtime rules... Overtime should only last one point
+    if (global.redCaps &gt; global.blueCaps){ //Blue can only stalemate; red can win
+        blueCanWin = false;
+        redCanWin = true;
+    }
+    if (global.blueCaps &gt; global.redCaps){ //Red can only stalemate; blue can win
+        redCanWin = false;
+        blueCanWin = true;
+    }
+    else if (global.blueCaps == global.redCaps) { //Its anyone's game
+       redCanWin = true;
+       blueCanWin = true;
+    }
+    startedOvertime = true;
+}
+if (overtime) {
+    if (redCanWin and !blueCanWin){
+        if (global.redCaps &gt;= global.blueCaps + 2 or !blueIsCapping)
+            global.winners = TEAM_RED;
+        if (global.redCaps == global.blueCaps)
+            global.winners = TEAM_SPECTATOR;
+    }
+    else if (blueCanWin and !redCanWin) {
+        if (global.blueCaps &gt;= global.redCaps + 2 or !redIsCapping)
+            global.winners = TEAM_BLUE;
+        if (global.blueCaps == global.redCaps)
+            global.winners = TEAM_SPECTATOR;
+    }
+    else if (blueCanWin and redCanWin){
+        if (global.redCaps &gt; global.blueCaps)
+            global.winners = TEAM_RED;
+        if (global.blueCaps &gt; global.redCaps)
+            global.winners = TEAM_BLUE;
+        if (!redIsCapping and !blueIsCapping)
+            global.winners = TEAM_SPECTATOR;
+    }
+    
+}
+
 </argument>
       </arguments>
     </action>
