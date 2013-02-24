@@ -18,9 +18,7 @@ for(i=0; i<ds_list_size(global.players); i+=1)
         removePlayer(player);
         ServerPlayerLeave(i, global.sendBuffer);
         i-=1;
-        with(GameServer) {
-            ServerBalanceTeams();
-        }
+        ServerBalanceTeams();
     }
     else
         processClientCommands(player, i);
