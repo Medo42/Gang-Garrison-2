@@ -175,7 +175,20 @@ while(commandLimitRemaining > 0) {
             
             setChatBubble(player, bubbleImage);
             break;
+
+        case DEATH_BUBBLE:
+            var bubbleImage;
+            bubbleImage = read_ubyte(socket);
+            if(global.aFirst) {
+                bubbleImage = 0;
+            }
+            write_ubyte(global.sendBuffer, DEATH_BUBBLE);
+            write_ubyte(global.sendBuffer, playerId);
+            write_ubyte(global.sendBuffer, bubbleImage);
             
+            setDeathBubble(player, bubbleImage);
+            break;
+
         case BUILD_SENTRY:
             if(player.object != -1)
             {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">draw_sprite_ext(BubblesS, bubble, x + 10, y, 1, 1, 0, c_white, image_alpha);
+if (team == TEAM_RED) {
+    draw_set_color(c_red);
+} else if (team == TEAM_BLUE) {
+    draw_set_color(c_blue);
+} else {
+    draw_set_color(c_gray);
+}
+
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_alpha(image_alpha);
+
+draw_text(x, y + 35, name);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

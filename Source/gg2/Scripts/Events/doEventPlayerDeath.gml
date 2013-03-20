@@ -182,6 +182,8 @@ with(victim.object) {
             deadbody.image_xscale = -1;  
         }
     }
+    victim.corpseX = x;
+    victim.corpseY = y;
 }
 
 if (global.gg_birthday){
@@ -209,4 +211,9 @@ if( global.killCam and victim == global.myself and killer and killer != victim a
     DeathCam.oldyview=view_yview[0];
     DeathCam.lastDamageSource=damageSource;
     DeathCam.team = global.myself.team;
+}
+
+// deathmote
+if (victim == global.myself and killer and killer != victim) {
+    instance_create(0, 0, DeathMoteBar);
 }

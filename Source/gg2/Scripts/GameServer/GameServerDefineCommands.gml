@@ -12,6 +12,7 @@ commandBytes[PLAYER_LEAVE] = 0;
 commandBytes[PLAYER_CHANGECLASS] = 1;
 commandBytes[PLAYER_CHANGETEAM] = 1;
 commandBytes[CHAT_BUBBLE] = 1;
+commandBytes[DEATH_BUBBLE] = 1;
 commandBytes[BUILD_SENTRY] = 0;
 commandBytes[DESTROY_SENTRY] = 0;
 commandBytes[DROP_INTEL] = 0;

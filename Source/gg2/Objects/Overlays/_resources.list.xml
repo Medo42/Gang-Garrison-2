@@ -23,6 +23,7 @@
   <resource name="StickyCounter" type="RESOURCE"/>
   <resource name="AmmoCounter" type="RESOURCE"/>
   <resource name="DeathCam" type="RESOURCE"/>
+  <resource name="DeathMoteBar" type="RESOURCE"/>
   <resource name="HealthHud" type="RESOURCE"/>
   <resource name="MedicRadar" type="RESOURCE"/>
   <resource name="WinBanner" type="RESOURCE"/>

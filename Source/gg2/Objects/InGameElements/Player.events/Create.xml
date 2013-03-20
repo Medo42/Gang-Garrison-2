@@ -15,6 +15,8 @@
       <arguments>
         <argument kind="STRING">{
     object = -1;
+    corpseX = -1;
+    corpseY = -1;
     team = TEAM_SPECTATOR;
     class = CLASS_SCOUT;
     socket = -1;

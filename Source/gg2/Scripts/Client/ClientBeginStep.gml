@@ -256,7 +256,14 @@ do {
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
             setChatBubble(player, read_ubyte(global.tempBuffer));
             break;
-             
+
+        case DEATH_BUBBLE:
+            var bubbleImage;
+            receiveCompleteMessage(global.serverSocket,2,global.tempBuffer);
+            player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));
+            setDeathBubble(player, read_ubyte(global.tempBuffer));
+            break;
+
         case BUILD_SENTRY:
             receiveCompleteMessage(global.serverSocket,6,global.tempBuffer);
             player = ds_list_find_value(global.players, read_ubyte(global.tempBuffer));

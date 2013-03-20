@@ -4,4 +4,5 @@
   <resource name="BubbleMenuXS" type="RESOURCE"/>
   <resource name="BubbleMenuCS" type="RESOURCE"/>
   <resource name="BubbleMenuX2S" type="RESOURCE"/>
+  <resource name="DeathMoteBarS" type="RESOURCE"/>
 </resources>
