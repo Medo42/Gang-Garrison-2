@@ -54,19 +54,22 @@ do {
 
             if (string_length(plugins))
             {
-                usePlugins = pluginsRequired;
-                if (pluginsRequired)
+                usePlugins = pluginsRequired || !global.serverPluginsPrompt;
+                if (global.serverPluginsPrompt)
                 {
-                    if (!show_question("This server requires the following plugins to play on it: " + plugins + '#They are downloaded from the source: "' + PLUGIN_SOURCE + '"#The source states: "' + PLUGIN_SOURCE_NOTICE + '"#Do you wish to download them and continue connecting?'))
+                    if (pluginsRequired)
                     {
-                        instance_destroy();
-                        exit;
+                        if (!show_question("This server requires the following plugins to play on it: " + plugins + '#They are downloaded from the source: "' + PLUGIN_SOURCE + '"#The source states: "' + PLUGIN_SOURCE_NOTICE + '"#Do you wish to download them and continue connecting?'))
+                        {
+                            instance_destroy();
+                            exit;
+                        }
                     }
-                }
-                else
-                {
-                    if (show_question("This server suggests the following optional plugins to play on it: " + plugins + '#They are downloaded from the source: "' + PLUGIN_SOURCE + '"#The source states: "' + PLUGIN_SOURCE_NOTICE + '"#Do you wish to download them and use them?'))
-                        usePlugins = true;
+                    else
+                    {
+                        if (show_question("This server suggests the following optional plugins to play on it: " + plugins + '#They are downloaded from the source: "' + PLUGIN_SOURCE + '"#The source states: "' + PLUGIN_SOURCE_NOTICE + '"#Do you wish to download them and use them?'))
+                            usePlugins = true;
+                    }
                 }
                 if (usePlugins)
                 {
@@ -537,7 +540,35 @@ do {
                 doEventFireWeapon(player, read_ushort(global.tempBuffer));
             }
             break;
-        
+
+        case PLUGIN_PACKET:
+            var packetID, bufLen, buf, packetBufferQueue, packetPlayerQueue;
+
+            // fetch packet header
+            receiveCompleteMessage(global.serverSocket, 3, global.tempBuffer);
+            packetID = read_ubyte(global.serverSocket);
+            bufLen = read_ushort(global.serverSocket);
+            
+            // get full packet
+            buf = buffer_create();
+            receiveCompleteMessage(global.serverSocket, bufLen, buf);
+
+            // check this is a recognised plugin ID
+            if (ds_map_exists(global.pluginPacketBuffers, packetID))
+            {
+                // enque buffer and Player in queue
+                packetBufferQueue = ds_map_find_value(global.pluginPacketBuffers, packetID);
+                packetPlayerQueue = ds_map_find_value(global.pluginPacketPlayers, packetID);
+                ds_queue_enqueue(packetBufferQueue, buf);
+                // give a Player value of -1 as this was received by client
+                ds_queue_enqueue(packetPlayerQueue, -1);
+            }
+            else
+            {
+                show_error("ERROR when reading plugin packet: no such plugin packet ID " + string(packetID), true);
+            }
+            break;
+
         default:
             show_message("The Server sent unexpected data");
             game_end();
