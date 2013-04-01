@@ -83,7 +83,6 @@
             } else {
                 if (global.myself.team == player.team or global.mapchanging) {
                     draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_white,alpha)
-                    draw_sprite_ext(Icon,player.class,xoffset+14,yoffset+70+20*(i+1),1,1,0,c_red,alpha*0.2)
                 }
             }
         
@@ -119,8 +118,7 @@
                 }
             } else {
                 if(global.myself.team == player.team) {
-                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_white,alpha)
-                    draw_sprite_ext(Icon,player.class,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_blue,alpha*0.2)
+                    draw_sprite_ext(Icon,player.class+10,xoffset+xsize/2+49,yoffset+70+20*(i+1),1,1,0,c_white,alpha)
                 }
             }
        
