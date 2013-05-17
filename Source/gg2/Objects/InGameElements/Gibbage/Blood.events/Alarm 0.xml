@@ -21,12 +21,15 @@
     if(random(8)&gt;4){ 
     var blood;
     blood = instance_create(x,y,BloodDrop);
+    blood.alarm[0]=50;
+    blood.lifetime=50;
     blood.speed = random(12);
     blood.direction = direction+random(43)-22;
     blood.lifetime = 60+random(51)-25;
         }
     }
-}</argument>
+}
+</argument>
       </arguments>
     </action>
     <action id="301" library="1">
