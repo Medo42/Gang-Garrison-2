@@ -111,7 +111,7 @@ with(victim.object) {
             break;
         }
 
-        repeat(global.gibLevel * 14) {
+        repeat(global.gibLevel * 30) {
             var blood;
             blood = instance_create(x+random(23)-11,y+random(23)-11,BloodDrop);
             blood.hspeed=(random(21)-10);
