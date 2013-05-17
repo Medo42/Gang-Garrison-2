@@ -14,10 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if(!stick) {
-move_contact_solid(point_direction(x,y,x+hspeed,y+vspeed),-1)
-    }
-speed=0;
-stick = true;
+    move_contact_solid(point_direction(x,y,x+hspeed,y+vspeed),-1);
+    speed=0;
+    stick = true;
+}
 </argument>
       </arguments>
     </action>

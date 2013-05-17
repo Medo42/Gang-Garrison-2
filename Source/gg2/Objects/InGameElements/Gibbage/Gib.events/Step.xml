@@ -21,6 +21,8 @@ if global.gibLevel &gt; 0{
 if(abs(speed/bloodchance)&gt;random(16/global.gibLevel)) {
     var blood;
     blood = instance_create(x,y-1,BloodDrop);
+    blood.alarm[0]=100;
+    blood.lifetime=100;
     blood.ogib=self;
     blood.odir=point_direction(x,y,x+hspeed,y+vspeed);
      with(blood) {
