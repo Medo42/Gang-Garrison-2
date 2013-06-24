@@ -24,6 +24,7 @@
     
     write_ubyte(global.serverSocket, HELLO);
     write_buffer(global.serverSocket, global.protocolUuid);
+    write_string(global.serverSocket, global.binaryId);
     socket_send(global.serverSocket);
     
     room_goto_fix(DownloadRoom);

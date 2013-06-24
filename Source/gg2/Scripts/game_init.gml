@@ -205,6 +205,9 @@
     global.gg2lobbyId = buffer_create();
     parseUuid(GG2_LOBBY_UUID, global.gg2lobbyId);
     
+    global.binaryId = GG2DLL_compute_MD5(parameter_string(0));
+    global.binaryIdFilter = 'return true;';
+    
 var a, IPRaw, portRaw;
 doubleCheck=0;
 global.launchMap = "";

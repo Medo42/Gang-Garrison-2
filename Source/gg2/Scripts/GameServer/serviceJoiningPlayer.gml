@@ -45,8 +45,10 @@ case STATE_EXPECT_HELLO:
     for(i=0; i<4; i+=1)
         if(read_uint(socket) != read_uint(global.protocolUuid))
             sameProtocol = false;
-            
-    if(!sameProtocol)
+
+    binaryId = read_string(socket, 32);
+
+    if(!sameProtocol || !execute_string(global.binaryIdFilter, binaryId))
         write_ubyte(socket, INCOMPATIBLE_PROTOCOL);
     else if(global.serverPassword == "")
     {
@@ -145,6 +147,7 @@ case STATE_EXPECT_NAME:
     
     player = instance_create(0,0,Player);
     player.socket = socket;
+    player.binaryId = binaryId;
     socket = -1; // Prevent the socket from being destroyed with the JoiningPlayer - it belongs to the Player now.
     
     player.name = read_string(player.socket, expectedBytes);

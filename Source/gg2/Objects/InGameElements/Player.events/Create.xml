@@ -18,6 +18,7 @@
     team = TEAM_SPECTATOR;
     class = CLASS_SCOUT;
     socket = -1;
+    binaryId = "";
     name = "";
     kicked = false;
     
