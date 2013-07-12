@@ -419,6 +419,7 @@ global.launchMap = "";
     global.changeTeam = ini_read_real("Controls", "changeTeam", ord("N"));
     global.changeClass = ini_read_real("Controls", "changeClass", ord("M"));
     global.showScores = ini_read_real("Controls", "showScores", vk_shift);
+	global.takescreenshot = ini_read_real("Controls","takeScreenshot", vk_control);
     ini_close();
     
     calculateMonthAndDay();
