@@ -15,9 +15,9 @@
     
     uniqueSuffix = "";
     uniqueSuffixNr = 2;
-    while (file_exists("Screenshots/" + timestamp + uniqueSuffix + ".png")) {
+    while (file_exists("Screenshots/" + timestamp + uniqueSuffix + " " + global.serverName + " " + global.currentMap + ".png")) {
         uniqueSuffix = " ("+string(uniqueSuffixNr)+")";
         uniqueSuffixNr += 1;
     }
-    screen_save("Screenshots/" + timestamp + uniqueSuffix + ".png");
+    screen_save("Screenshots/" + timestamp + uniqueSuffix + " " + global.serverName + " " + global.currentMap + ".png");
 }
