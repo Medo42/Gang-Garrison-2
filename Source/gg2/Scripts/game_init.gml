@@ -121,7 +121,7 @@
     ini_write_real("Settings", "Gib Level", global.gibLevel);
     ini_write_real("Settings", "Kill Cam", global.killCam);
     ini_write_real("Settings", "Monitor Sync", global.monitorSync);
-    ini_read_real ("Settings", "Lock Mouse in Window" global.mouselock);
+    ini_write_real("Settings", "Lock Mouse in Window", global.mouselock);
     ini_write_real("Settings", "Healer Radar", global.medicRadar);
     ini_write_real("Settings", "Show Healer", global.showHealer);
     ini_write_real("Settings", "Show Healing", global.showHealing);
