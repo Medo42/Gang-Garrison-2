@@ -13,9 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(40, 200, 300, 200, 30);
-
-menu_create(40, 140, 300, 200, 30);
+        <argument kind="STRING">menu_create(40, 140, 300, 200, 30);
 
 menu_addedit_text("Server Plugins:", "global.serverPluginList", '
     gg2_write_ini("Server", "ServerPluginList", argument0);
