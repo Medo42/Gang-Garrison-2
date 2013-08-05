@@ -87,6 +87,11 @@ menu_addlink("Classlimits", '
     instance_destroy();
 ');
 
+menu_addlink("Server Sent Plugin Options", '
+    instance_create(x,y,PluginOptionsController);
+    instance_destroy();
+');
+
 menu_addlink("Start Game", '
     //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
     if (global.Server_RespawntimeSec == 0)
