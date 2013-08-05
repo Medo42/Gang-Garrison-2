@@ -16,10 +16,10 @@
         <argument kind="STRING">afktimeout=60*30;
 afktimer=afktimeout;
 oldScoreKeyDown=false;
-if global.mouselock = 1
-mouseLock = false;
-else 
-if global.mouselock = 0
+if (global.mouselock == 1)
+    mouseLock = false;
+else if (global.mouselock == 0)
+    mouseLock = true;
 </argument>
       </arguments>
     </action>
