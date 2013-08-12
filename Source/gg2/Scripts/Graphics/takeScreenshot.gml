@@ -19,5 +19,7 @@
         uniqueSuffix = " ("+string(uniqueSuffixNr)+")";
         uniqueSuffixNr += 1;
     }
-    screen_save("Screenshots/" + timestamp + uniqueSuffix + ".png");
+    if instance_exists(PlayerControl){
+    screen_save("Screenshots/" + timestamp + uniqueSuffix + " " + global.joinedServerName + " " + global.currentMap + ".png");
+    }
 }
