@@ -134,12 +134,6 @@ case STATE_EXPECT_NAME:
     noOfPlayers = ds_list_size(global.players);
     if(global.dedicatedMode)
         noOfPlayers -= 1;
-        
-    if(noOfPlayers >= global.playerLimit)
-    {
-        write_ubyte(socket, SERVER_FULL);
-        break;
-    }
     
     ServerJoinUpdate(socket);
     
