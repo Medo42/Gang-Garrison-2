@@ -26,7 +26,7 @@ menu_add_option(0, "Not Required");
 menu_add_option(1, "Required");
 
 menu_addlink("Retrieve Server Plugin List",'
-    splash_show_web("http://www.ganggarrison.com/plugins/",0);
+    splash_show_web(PLUGIN_SOURCE,0);
 ');
 
 menu_addback("Back", '
