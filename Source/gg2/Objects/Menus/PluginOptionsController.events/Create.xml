@@ -16,6 +16,7 @@
         <argument kind="STRING">menu_create(40, 140, 300, 200, 30);
 
 menu_addedit_text("Server Plugins:", "global.serverPluginList", '
+    show_message("Please make sure your plugin list is in this format: (Plugin1,Plugin2,Plugin3,etc)")
     gg2_write_ini("Server", "ServerPluginList", argument0);
 ');
 
