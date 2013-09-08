@@ -69,6 +69,10 @@
     customMapRotationFile = ini_read_string("Server", "MapRotation", "");
     global.shuffleRotation = ini_read_real("Server", "ShuffleRotation", 1);
     global.timeLimitMins = max(1, min(255, ini_read_real("Server", "Time Limit", 15)));
+    global.ctfTimeLimit = max(1, min(255, ini_read_real("Server", "Ctf Time Limit", 15)));
+    global.cpTimeLimit = max(1, min(255, ini_read_real("Server", "Cp Time Limit", 15)));
+    global.genTimeLimit = max(1, min(255, ini_read_real("Server", "Gen Time Limit", 15)));
+    global.arenaTimeLimit = max(1, min(255, ini_read_real("Server", "Arena Time Limit", 15)));
     global.serverPassword = ini_read_string("Server", "Password", "");
     global.mapRotationFile = customMapRotationFile;
     global.dedicatedMode = ini_read_real("Server", "Dedicated", 0);
@@ -141,6 +145,10 @@
     ini_write_real("Server", "Respawn Time", global.Server_RespawntimeSec);
     ini_write_real("Server", "Total bandwidth limit for map downloads in bytes per second", global.mapdownloadLimitBps);
     ini_write_real("Server", "Time Limit", global.timeLimitMins);
+    ini_write_real("Server", "Ctf Time Limit", global.ctfTimeLimit);
+    ini_write_real("Server", "Cp Time Limit", global.cpTimeLimit);
+    ini_write_real("Server", "Gen Time Limit", global.genTimeLimit);
+    ini_write_real("Server", "Arena Time Limit", global.arenaTimeLimit);
     ini_write_string("Server", "Password", global.serverPassword);
     ini_write_real("General", "UpdaterBetaChannel", global.updaterBetaChannel);
     ini_write_real("Server", "Attempt UPnP Forwarding", global.attemptPortForward); 
