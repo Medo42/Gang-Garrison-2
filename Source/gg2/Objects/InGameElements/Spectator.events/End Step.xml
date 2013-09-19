@@ -26,8 +26,8 @@ moved = false;
 stopTracking = false;
 
 //moving view - mapped keys
-if(!(instance_exists(InGameMenuController) || instance_exists(OptionsController) || instance_exists(ControlsController) || instance_exists(HUDOptionsController)))
-{
+if (!(instance_exists(InGameMenuController) || instance_exists(OptionsController) || instance_exists(ControlsController) || instance_exists(HUDOptionsController) || instance_exists(Console))) {
+    //moving view - mapped keys
     if keyboard_check(global.left)
     {
         if x &gt; 400 x-=20;
@@ -38,7 +38,6 @@ if(!(instance_exists(InGameMenuController) || instance_exists(OptionsController)
         if x &lt; map_width()-400 x+=20;
         moved = true;
     }
-    
     if keyboard_check(global.jump)
     {
         if y &gt; 300 y-=20;
