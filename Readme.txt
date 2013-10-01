@@ -448,7 +448,7 @@ mrfredman, MedO, Synnah
 Programmers:
 MedO, Cube7 aka Chris P. Bacon, Andrew "cspotcode" Bradley, Vaati, Taimat, Findude, Juicebox360, Jebus_Chris,
 Leiche, Xeyk, pach, Austin "Psychopath" Benz, L, technoviking, AJF, Alexander "Wareya" Nadeau, Vindicator,
-NAGN, Orpheon, JaxOf7 and RebelINS
+NAGN, Orpheon, JaxOf7, Arctic and RebelINS
 
 Artists:
 mrfredman, Fishmatt, BassieEnAdriaan, Timohtep, Elkondo, Waterfall and Skeledude
@@ -485,9 +485,6 @@ are intended as a respectful homage.
 
 This game uses the Faucet Networking extension by MedO, which is available under the terms of the ISC license.
 You can find more information on Faucet Networking at http://gmc.yoyogames.com/index.php?showtopic=498062.
-
-This game uses the Download Manager DLL, created by Hobbel.  It was wrapped into an extension by cspotcode.
-You can find more information on the Download Manager DLL at http://www.hobbl.com/gmdlls/downloadmanager
 
 This game uses the Faucet Forwarding Extension, created by NAGN, which wraps libminiupnp.
 miniupnp is availible under the BSD license: see miniupnp.license for full license.
