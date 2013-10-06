@@ -4,6 +4,6 @@
 var prompt;
 
 if (global.restartPrompt == 1)
-    promptRestartOrQuit("Because you used this server's plugins, you will have to restart GG2 to play on another server.");
+    promptRestartOrQuit("Because you used this server's plugins, you will have to restart GG2 to play on another server.","Restart","Cancel","Quit");
 else
     restartGG2();

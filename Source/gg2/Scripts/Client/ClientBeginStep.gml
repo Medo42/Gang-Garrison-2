@@ -611,7 +611,7 @@ do {
             break;
 
         default:
-            promptRestartOrQuit("The Server sent unexpected data.");
+            promptRestartOrQuit("The Server sent unexpected data.","Restart","Cancel","Quit");
             exit;
         }
     } else {
