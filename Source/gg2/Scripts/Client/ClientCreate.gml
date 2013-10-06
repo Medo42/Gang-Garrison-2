@@ -7,7 +7,7 @@
     }
     nocreate=false;
     usePreviousPwd = false;
-    noUnloadPlugins = false;
+    global.noUnloadPlugins = false;
     noReloadPlugins = false;
     
     global.players = ds_list_create();
