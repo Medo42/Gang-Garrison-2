@@ -38,7 +38,7 @@
     menu_addlink("Disconnect", '
         // Force dedicated mode to off so you can go to main menu instead of just restarting server
         global.dedicatedMode = 0;
-        if (global.serverPluginsInUse &amp;&amp; !global.noUnloadPlugins)
+        if (global.serverPluginsInUse)
             pluginscleanup();
         else
         
