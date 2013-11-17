@@ -25,8 +25,7 @@
         var newName;
         newName = string_copy(argument0, 0, min(string_length(argument0), MAX_PLAYERNAME_LENGTH));
         if string_count("#",newName) &gt; 0 {
-            show_message("Invalid character ' + "'\#'" + ' in name");
-            newName = "Player";
+            newName = string_replace_all(newName,"#","\#");
         }
         gg2_write_ini("Settings", "PlayerName", newName);
         if(room != Options and newName != oldPlayerName)
