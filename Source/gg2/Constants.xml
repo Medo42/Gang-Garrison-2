@@ -162,4 +162,5 @@
   <constant name="MUSIC_BOTH" value="1"/>
   <constant name="MUSIC_INGAME_ONLY" value="2"/>
   <constant name="MUSIC_NONE" value="3"/>
+  <constant name="BUBBLE_LIMIT" value="10"/>
 </constants>

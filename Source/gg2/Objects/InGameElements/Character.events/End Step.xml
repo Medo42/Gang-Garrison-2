@@ -136,6 +136,9 @@ if (player == global.myself)
         view_yview[0] = y-view_hview[0]/2;
     }
 }
+//make the bubble buffer decrease
+//I'll probably tweak this value a little more in the future
+player.bubbleBuffer -= 0.01
 </argument>
       </arguments>
     </action>
