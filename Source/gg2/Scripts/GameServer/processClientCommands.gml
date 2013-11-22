@@ -182,8 +182,10 @@ while(commandLimitRemaining > 0) {
             write_ubyte(global.sendBuffer, CHAT_BUBBLE);
             write_ubyte(global.sendBuffer, playerId);
             write_ubyte(global.sendBuffer, bubbleImage);
-            
-            setChatBubble(player, bubbleImage);
+            if player.bubbleBuffer < BUBBLE_LIMIT{
+               setChatBubble(player, bubbleImage);
+               player.bubbleBuffer += 1
+            }
             break;
             
         case BUILD_SENTRY:
