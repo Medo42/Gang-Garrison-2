@@ -13,11 +13,17 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if((random(16)&lt;1)) {
-        other.image_xscale+=0.1;
-        other.image_yscale+=0.1;
-        instance_destroy()
- }</argument>
+        <argument kind="STRING">if(not stick and other.stick and speed&gt;other.speed) {
+    if(other.image_yscale&lt;2 and other.lifetime&lt;250) {
+    other.image_xscale+=0.15;
+    other.image_yscale+=0.1;
+    other.offset+=.2;
+    other.alarm[0]+=alarm[0]/3;
+    other.lifetime+=lifetime/3;
+    }
+    instance_destroy();
+ }
+</argument>
       </arguments>
     </action>
   </actions>
