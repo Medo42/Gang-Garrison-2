@@ -3,15 +3,27 @@
 // Originally meant to be run in collision, but we moved it; now run in step.
 
 {
+    hspeed *= global.delta_factor;
+    vspeed *= global.delta_factor;
+    
     var oldx, oldy, oldhspeed, oldvspeed, distleft, hleft, vleft;
     oldx=x;
     oldy=y;
     oldhspeed=hspeed;
     oldvspeed=vspeed;
-
-    // slide left and right to get outside of any walls
-    move_outside_solid(0, 8);
-    move_outside_solid(180, 16);
+    
+    // slide in an appropriate direction to get outside of walls
+    if(!place_free(x, y))
+    {
+        if(place_free(x, bbox_top))
+            move_outside_solid(90, (bbox_bottom-bbox_top)/2);
+        else if(place_free(x, bbox_bottom))
+            move_outside_solid(270, (bbox_bottom-bbox_top)/2);
+        else if(place_free(bbox_right, y))
+            move_outside_solid(0, (bbox_right-bbox_left)/2);
+        else if(place_free(bbox_left, y))
+            move_outside_solid(180, (bbox_right-bbox_left)/2);
+    }
 
     hleft = hspeed;
     vleft = vspeed;
@@ -19,7 +31,7 @@
     var loopCounter, stuck;
     loopCounter = 0;
     stuck = 0;
-    while((abs(hleft) >= 1 || abs(vleft) >= 1) && stuck = 0){ // while we still have distance to travel
+    while((abs(hleft) > 0.1 || abs(vleft) > 0.1) && stuck = 0){ // while we still have distance to travel
         loopCounter += 1;
         if(loopCounter > 10) {
             // debugging stuff.
@@ -44,7 +56,7 @@
         prevX = x;
         prevY = y;
         // move as far as we can without hitting something
-        move_contact_solid(point_direction(x, y, x + hleft, y + vleft), point_distance(x, y, x + hleft, y + vleft));
+        good_move_contact_solid(point_direction(x, y, x + hleft, y + vleft), point_distance(x, y, x + hleft, y + vleft));
         // deduct that movement from our remaining movement
         hleft -= x - prevX;
         vleft -= y - prevY;
@@ -52,7 +64,7 @@
         // determine what we hit, and act accordingly
 
         if(vleft != 0 && !place_free(x, y + sign(vleft))) { // we hit a ceiling or floor
-            if(vleft>0) {
+            if(vleft > 0) {
                 moveStatus = 0; // floors, not ceilings, reset moveStatus
             }
             vleft = 0; // don't go up or down anymore
@@ -82,10 +94,14 @@
         }
         if(!collisionRectified && (abs(hleft) >= 1 || abs(vleft) >= 1)) {
             // uh-oh, no collisions fixed, try stopping all vertical movement and see what happens
+            // (common case: falling sideways onto a corner)
             vspeed = 0;
             vleft = 0;
         }
     }
+    
+    hspeed /= global.delta_factor;
+    vspeed /= global.delta_factor;
     
     // Set these backwards before the game runs step
     x -= hspeed;
