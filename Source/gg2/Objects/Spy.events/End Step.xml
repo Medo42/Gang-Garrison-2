@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="2">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Make self invisible if behind enemy
+invisible = false;
+
+if (global.myself != -1) {
+    if (global.myself.object != -1) {
+        with (global.myself.object)
+        {
+            if ((team != other.team) &amp;&amp; (sign(other.x - x) == -sign(image_xscale))) // Passive
+                other.invisible = true;
+            else // LOS
+            {
+                if(collision_line(x, y-16, other.x, other.y, Obstacle, true, true) and
+                    collision_line(x, y-16, other.x, other.y-8, Obstacle, true, true) and
+                    collision_line(x, y-16, other.x, other.y-16, Obstacle, true, true) and
+                    collision_line(x, y-16, other.x, other.y+8, Obstacle, true, true) and
+                    collision_line(x, y-16, other.x, other.y+16, Obstacle, true, true) and
+                    collision_line(x, y-16, other.x, other.y+24, Obstacle, true, true))
+                    other.invisible = true;
+                    
+            }
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+    <action id="604" library="1">
+      <!--action name: Inherited-->
+      <kind>NORMAL</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>false</canApplyTo>
+      <actionType>FUNCTION</actionType>
+      <functionName>action_inherited</functionName>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments/>
+    </action>
+  </actions>
+</event>
