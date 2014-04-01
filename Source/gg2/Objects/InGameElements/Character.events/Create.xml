@@ -43,6 +43,8 @@
     onground = true;
     still = true;
     yoffset = 0;
+    sprite_special = global.gg_birthday or global.xmas;
+    
     // class sprite vars
     spriteRun = sprite_index;
     spriteJump = sprite_index;

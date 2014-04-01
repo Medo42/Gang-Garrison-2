@@ -312,7 +312,7 @@ if (intel)
                             INTEL_MAX_TIMER/((3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
 }
 var sprite_length;
-if(player.class == CLASS_QUOTE)
+if(player.class == CLASS_QUOTE or sprite_special or zoomed)
     sprite_length = 2;
 else
     sprite_length = CHARACTER_ANIMATION_LEN;
@@ -326,9 +326,9 @@ if (player.humiliated)
     if (!place_free(x,y+1) &amp;&amp; hspeed != 0)
         animationImage = 1+
         ((animationImage-1+
-          min(abs(hspeed), 8)*sign(hspeed)
+          min(abs(hspeed), 8)
           *global.delta_factor/20) mod 
-         sprite_length);
+         2);
 }
 else
 {
@@ -343,9 +343,9 @@ else
          *image_xscale*global.delta_factor/20)
         mod sprite_length;
     }
+    // ensure positive animationImage
+    animationImage = (animationImage+sprite_length) mod sprite_length;
 }
-// ensure positive animationImage
-animationImage = (animationImage+sprite_length) mod sprite_length;
 
 charUnsetSolids();
 

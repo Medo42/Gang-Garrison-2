@@ -25,6 +25,7 @@
     bubbled = false;
     reflector = noone;
     knockback = 10;
+    particleCycle = 0;
 }
 </argument>
       </arguments>
