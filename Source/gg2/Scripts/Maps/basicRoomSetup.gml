@@ -1,6 +1,5 @@
 room_caption = global.currentMap;
 global.startedGame = true;
-
 if(!global.fullscreen)
     window_set_position(previous_window_x+previous_window_w/2-global.ingamewidth/2, previous_window_y);
 
@@ -76,10 +75,18 @@ instance_create(0,0,TeamSelectController);
 if (!instance_exists(KillLog))
     instance_create(0,0,KillLog);
 
-sound_stop_all();
+// Oh hey, I don't actually need to create a dedicated stop all generators function
+faudio_stop_generator(-1);
 
-if(global.music == MUSIC_BOTH || global.music == MUSIC_INGAME_ONLY) {
-    AudioControlPlaySong(global.IngameMusic, true);
+if(global.music == MUSIC_BOTH || global.music == MUSIC_INGAME_ONLY) 
+{
+    global.IngameMusic=faudio_new_generator(global.IngameMusicS);
+    
+    if(global.IngameMusic != -1)
+    {
+        faudio_volume_generator(global.IngameMusic, 0.8);
+        AudioControlPlaySong(global.IngameMusic, true);
+    }
 }
 instance_create(map_width()/2,map_height()/2,Spectator);
 

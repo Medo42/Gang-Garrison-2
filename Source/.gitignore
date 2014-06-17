@@ -17,3 +17,5 @@
 /ServerPluginsDebug
 /ServerPluginsCache
 /ServerPluginsData
+/Music
+*.dll
