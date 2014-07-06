@@ -29,9 +29,34 @@ if(instance_exists(healTarget))
             color = c_red;
         else
             color = c_blue;
-            
+        
         draw_set_alpha(0.3);
-        draw_line_width_color(xdrawpos+lengthdir_x(24,owner.aimDirection),ydrawpos+lengthdir_y(24,owner.aimDirection),healTarget.object.x, healTarget.object.y, 5, color, color);
+        var startx,starty,endx,endy,segments,lastx,lasty,dist,dir;
+        startx = xdrawpos+lengthdir_x(24,owner.aimDirection);
+        starty = ydrawpos+lengthdir_y(24,owner.aimDirection);
+        endx = healTarget.object.x;
+        endy = healTarget.object.y;
+        dist = point_distance(startx,starty,endx,endy)*2;
+        dir = owner.aimDirection + (cos(current_time/150)*3);
+        segments = 20; //Change this to increase/decrease quality.
+        lastx = startx;
+        lasty = starty;
+        for (i=0;i&lt;segments;i+=1)
+        { //((max-min)*value)+min;
+            var xx,yy,x1,y1,x2,y2;
+            x1 = (((xdrawpos+lengthdir_x(dist,dir))-startx)*(i/segments))+startx;
+            y1 = (((ydrawpos+lengthdir_y(dist,dir))-starty)*(i/segments))+starty;
+            x2 = ((endx-startx)*(i/segments))+startx;
+            y2 = ((endy-starty)*(i/segments))+starty;
+            
+            xx = ((x2-x1)*(i/segments))+x1;
+            yy = ((y2-y1)*(i/segments))+y1;
+            draw_line_width_color(lastx,lasty,xx,yy, 5+sin(-(current_time/25)+i), color, color);
+            lastx = xx;
+            lasty = yy;
+        }
+        
+        draw_line_width_color(lastx,lasty,endx,endy, 5, color, color);
         if (sprite_index != normalSprite) {
             //cancel the fire animation
             sprite_index = normalSprite;
@@ -58,6 +83,7 @@ if (owner.ubered) {
         ubercolour = c_blue;
     draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
 }
+
 </argument>
       </arguments>
     </action>
