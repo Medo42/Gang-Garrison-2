@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+  if(dragging = true) {
+    effective_x = mouse_x - relative_x - view_xview[0]
+    effective_y = mouse_y - relative_y - view_yview[0]
+  }
+  
+  x = effective_x + view_xview[0]
+  y = effective_y + view_yview[0]
+  
+  // fade in and out depending on if mouse is hovering or not
+  if (global.notOnTools == true)
+  {
+     image_alpha -= 0.05;
+  }
+  else
+  {
+     image_alpha += 0.1;
+  }
+  
+  if (image_alpha &lt; 0.5)
+  {
+    image_alpha = 0.5;
+  }
+  else if (image_alpha &gt; 1)
+  {
+    image_alpha = 1;
+  }
+  
+  with(ToolbarObject) {
+    // move item to follow toolbar handle
+    x = relative_x + other.x
+    y = relative_y + other.y
+    
+    // set transparency to match toolbar handle
+    image_alpha = other.image_alpha
+  }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="MOUSE" id="53">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">{
+  // if there are no gui components at the mouse position, then create an entity
+  if(instance_position(mouse_x,mouse_y,GUIObject) &lt; 0) {
+    // check for tools that don't place entities, or if we're not
+    // allowed to place items now
+    if(currentTool != "" &amp;&amp; currentTool != "moveTool" &amp;&amp; addingEntitiesAllowed)
+      create_entity(mouse_x, mouse_y, currentTool);
+  }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

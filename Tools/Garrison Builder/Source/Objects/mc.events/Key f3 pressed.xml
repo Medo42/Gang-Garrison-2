@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYPRESS" id="114">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var tempApp, tempDir, tempW;
+
+tempApp = get_string("Enter a name of the Paint application you wish to use to edit BGs and WMs.#Alternatively, you may enter nothing in order to leave this value alone.", global.paintApp);
+if (tempApp != "")
+{
+    global.paintApp = tempApp;
+}
+switch (show_question("Would you like to refresh maps after you finish editing them?"))
+{
+    case 1:  //if no was pressed
+    global.autoRefresh = 0;   
+    break;
+
+    case 0:  //if yes was pressed
+    global.autoRefresh = 1;   
+    break;
+}
+switch (show_question("Would you like to disable graphics effects for the toolbar (for slow computers)?"))
+{
+    case 1:  //if no was pressed
+    global.specialE = 0;   
+    break;
+
+    case 0:  //if yes was pressed
+    global.specialE = 1;   
+    break;
+}
+switch (show_question("Are you using 64-bit Windows Vista?"))
+{
+    case 1:  //if no was pressed
+    global.sixtyFourBitV = 0;   
+    break;
+
+    case 0:  //if yes was pressed
+    global.sixtyFourBitV = 1;   
+    break;
+}
+tempW = get_integer("Enter a value for the width of the Toolbox (one unit is one tool).#Alternatively, you may enter -1 in order to leave this value alone.", global.width);
+if (tempW != -1) || (tempW &gt;= 1) 
+{
+    if (tempW &gt; 22)
+    {
+        tempW = 22;
+    }
+    else if (tempW &lt; 1)
+    {
+        tempW = 1;
+    }    
+    global.width = tempW;
+}
+show_message("Enter the directory where the Gang Garrison 2 executable is located.");
+tempDir = get_directory("");
+if (tempDir != "")
+{
+    global.gg2Dir = tempDir;
+}
+
+ini_open("gb.ini");
+ini_write_string("Settings", "Paint Application", global.paintApp);
+ini_write_real("Settings", "Refresh BG/WM after edit", global.autoRefresh);
+ini_write_string("Settings", "Gang Garrison 2.exe Location", global.gg2Dir);
+ini_write_real("Settings", "Refresh BG/WM after edit", global.specialE);
+ini_write_real("Settings", "Toolbar Width", global.width);
+ini_write_real("Settings", "Windows Vista x64", global.sixtyFourBitV);  
+ini_close();
+
+switch (global.paintApp) // let's determine what program the user wants to launch to edit their image files.
+{
+    case "MSPaint":
+    if (global.sixtyFourBitV == 1)
+    {
+        global.paintAppdir = "C:\WINDOWS\SYSWOW64\mspaint.exe";
+    }
+    else
+    {
+        global.paintAppdir = "C:\WINDOWS\system32\mspaint.exe";
+    }
+    break;
+    
+    case "Paint":
+    if (global.sixtyFourBitV == 1)
+    {
+        global.paintAppdir = "C:\WINDOWS\SYSWOW64\mspaint.exe";
+    }
+    else
+    {
+        global.paintAppdir = "C:\WINDOWS\system32\mspaint.exe";
+    }
+    break;
+    
+    case "mspaint":
+    if (global.sixtyFourBitV == 1)
+    {
+        global.paintAppdir = "C:\WINDOWS\SYSWOW64\mspaint.exe";
+    }
+    else
+    {
+        global.paintAppdir = "C:\WINDOWS\system32\mspaint.exe";
+    }
+    break;
+    
+    case "paint":
+    if (global.sixtyFourBitV == 1)
+    {
+        global.paintAppdir = "C:\WINDOWS\SYSWOW64\mspaint.exe";
+    }
+    else
+    {
+        global.paintAppdir = "C:\WINDOWS\system32\mspaint.exe";
+    }
+    break;
+    
+    case "GIMP": 
+    global.paintAppdir = "C:\Progra~1\GIMP-2.0\bin\gimp-2.6.exe";
+    break;
+    
+    case "gimp": 
+    global.paintAppdir = "C:\Progra~1\GIMP-2.0\bin\gimp-2.6.exe";
+    break;
+    
+    case "graphicsgale": 
+    global.paintAppdir = "C:\Progra~1\GraphicsGale\Gale.exe";
+    break;
+    
+    case "GraphicsGale": 
+    global.paintAppdir = "C:\Progra~1\GraphicsGale\Gale.exe";
+    break;
+    
+    case "paint.net": 
+    global.paintAppdir = "C:\Progra~1\Paint.NET\PaintDotNet.exe";
+    break;
+    
+    case "paint.NET": 
+    global.paintAppdir = "C:\Progra~1\Paint.NET\PaintDotNet.exe";
+    break;
+    
+    case "Paint.NET": 
+    global.paintAppdir = "C:\Progra~1\Paint.NET\PaintDotNet.exe";
+    break;
+    
+    default: // if we didn't know what the program was
+    global.paintAppdir = "C:\WINDOWS\system32\mspaint.exe";
+    break;
+}
+
+_buttony = 0;
+_buttonx = 0;
+_toolbarWidth = global.width;
+
+with(Button) {
+  relative_y = other._buttony
+  relative_x = other._buttonx
+  other._buttonx += 45;
+  if(other._buttonx &gt;= 45 * other._toolbarWidth) {
+    other._buttonx = 0;
+    other._buttony += 45;
+  }
+}
+
+// global.gg2Dir = chr(34) + global.gg2Dir + chr(34);</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

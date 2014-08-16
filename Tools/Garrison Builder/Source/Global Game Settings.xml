@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings>
+  <graphics>
+    <scalingPercent>0</scalingPercent>
+    <displayCursor>true</displayCursor>
+    <useVsync>false</useVsync>
+    <interpolateColors>false</interpolateColors>
+    <colorOutsideRoom>000000</colorOutsideRoom>
+  </graphics>
+  <windowing>
+    <startFullscreen>false</startFullscreen>
+    <dontDrawBorder>false</dontDrawBorder>
+    <allowWindowResize>true</allowWindowResize>
+    <alwaysOnTop>false</alwaysOnTop>
+    <dontShowButtons>false</dontShowButtons>
+    <switchVideoMode>false</switchVideoMode>
+  </windowing>
+  <splashImage>
+    <showCustom>true</showCustom>
+    <partiallyTransparent>false</partiallyTransparent>
+    <alphaTransparency>0</alphaTransparency>
+  </splashImage>
+  <progressBar>
+    <mode>LOADBAR_DEFAULT</mode>
+    <scaleImage>true</scaleImage>
+  </progressBar>
+  <keys>
+    <letF1ShowGameInfo>true</letF1ShowGameInfo>
+    <letF4SwitchFullscreen>false</letF4SwitchFullscreen>
+    <letF5SaveF6Load>false</letF5SaveF6Load>
+    <letF9Screenshot>true</letF9Screenshot>
+    <letEscEndGame>false</letEscEndGame>
+    <treatCloseAsEscape>false</treatCloseAsEscape>
+  </keys>
+  <errors>
+    <displayErrors>true</displayErrors>
+    <writeToLog>true</writeToLog>
+    <abortOnError>false</abortOnError>
+    <treatUninitializedAsZero>false</treatUninitializedAsZero>
+  </errors>
+  <gameInfo>
+    <gameId>884637</gameId>
+    <author>cspotcode, Taimat, juicebox360</author>
+    <version>204</version>
+    <information/>
+    <versionMajor>2</versionMajor>
+    <versionMinor>1</versionMinor>
+    <versionRelease>1</versionRelease>
+    <versionBuild>0</versionBuild>
+    <company>Faucet Software</company>
+    <product>Garrison Builder map editor</product>
+    <copyright>2008 - 2009 Faucet Software</copyright>
+    <description/>
+  </gameInfo>
+  <system>
+    <processPriority>PRIORITY_NORMAL</processPriority>
+    <disableScreensavers>true</disableScreensavers>
+    <freezeOnLoseFocus>false</freezeOnLoseFocus>
+  </system>
+  <includes>
+    <overwriteExisting>false</overwriteExisting>
+    <removeAtGameEnd>false</removeAtGameEnd>
+    <useTempFolder>false</useTempFolder>
+  </includes>
+</settings>

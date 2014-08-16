@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="popupBackgroundB" type="RESOURCE"/>
+  <resource name="levelbg" type="RESOURCE"/>
+  <resource name="levelwm" type="RESOURCE"/>
+  <resource name="grid" type="RESOURCE"/>
+  <resource name="gridCorner" type="RESOURCE"/>
+</resources>

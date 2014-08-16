@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if (type != "" || type != "moveTool")
+{
+  if (global.specialE == 0)
+  {
+    image_alpha = 1;
+  }
+  else if (global.specialE == 1)
+  {
+    image_alpha = 0.8;
+  }
+
+  if (string_pos("controlPoint", type) == 1)
+  {
+    // this is a control point entity, draw it with the point number
+    var text_sub;
+    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, image_alpha);
+    text_sub = string_delete(type, 1, 12);
+    
+    draw_text(x + 20, y + 20, text_sub);
+  }
+  else
+  {
+    // regular entity
+    image_index = 0;
+    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, image_alpha);
+  }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

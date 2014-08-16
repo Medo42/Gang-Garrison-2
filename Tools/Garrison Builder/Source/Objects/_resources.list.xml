@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ToggleButton" type="RESOURCE"/>
+  <resource name="whiteBG" type="RESOURCE"/>
+  <resource name="whiteWM" type="RESOURCE"/>
+  <resource name="LevelEntity" type="RESOURCE"/>
+  <resource name="CustomMapW" type="RESOURCE"/>
+  <resource name="mc" type="RESOURCE"/>
+  <resource name="ToolButton" type="RESOURCE"/>
+  <resource name="Button" type="RESOURCE"/>
+  <resource name="SpecifyButton" type="RESOURCE"/>
+  <resource name="ToolbarObject" type="RESOURCE"/>
+  <resource name="ToolBarTop" type="RESOURCE"/>
+  <resource name="GUIObject" type="RESOURCE"/>
+  <resource name="CollisionDummy" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="createToggleButton" type="RESOURCE"/>
+  <resource name="createToolButton" type="RESOURCE"/>
+  <resource name="createSpecifyButton" type="RESOURCE"/>
+  <resource name="createButtons" type="RESOURCE"/>
+  <resource name="createButton" type="RESOURCE"/>
+  <resource name="button_action" type="RESOURCE"/>
+  <resource name="drawProgressBar" type="RESOURCE"/>
+</resources>

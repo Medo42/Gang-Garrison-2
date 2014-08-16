@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="trans" type="RESOURCE"/>
+  <resource name="whiteBack" type="RESOURCE"/>
+  <resource name="GUI" type="GROUP"/>
+  <resource name="Buttons" type="GROUP"/>
+  <resource name="Entities" type="GROUP"/>
+  <resource name="Cursors" type="GROUP"/>
+  <resource name="EntityButtons" type="GROUP"/>
+</resources>

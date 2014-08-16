@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extensionPackages>
+  <package>GG2DLL</package>
+  <package>GG2PNGSave</package>
+  <package>GM Printing</package>
+  <package>GM Windows Dialogs</package>
+  <package>Hobbl Download Manager Ext Wrapper</package>
+</extensionPackages>

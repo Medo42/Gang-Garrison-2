@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var toolSpr;
+
+toolSpr = spriteForEntityType(currentTool);
+
+if (toolSpr &gt; 0 &amp;&amp; global.notOnTools)
+{
+ window_set_cursor(cr_none); // because an arrow above your entity isn't very clear.
+ draw_sprite_ext(toolSpr, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.45);
+}
+else if(currentTool == "moveTool" &amp;&amp; global.notOnTools)
+{
+  window_set_cursor(cr_drag); // move tool shows drag cursor
+}
+else
+{
+   window_set_cursor(cr_default); // the mouse cursor is displayed when we aren't placing entities.
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

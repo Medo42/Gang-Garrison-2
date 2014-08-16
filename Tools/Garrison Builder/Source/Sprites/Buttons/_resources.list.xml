@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="loadBG" type="RESOURCE"/>
+  <resource name="loadExisMap" type="RESOURCE"/>
+  <resource name="editBG" type="RESOURCE"/>
+  <resource name="editWM" type="RESOURCE"/>
+  <resource name="testMap" type="RESOURCE"/>
+  <resource name="unloadBG" type="RESOURCE"/>
+  <resource name="loadWalkmask" type="RESOURCE"/>
+  <resource name="embedLevelDataInPNG" type="RESOURCE"/>
+  <resource name="customClear" type="RESOURCE"/>
+  <resource name="unloadWalkmask" type="RESOURCE"/>
+  <resource name="loadEntities" type="RESOURCE"/>
+  <resource name="unloadEntities" type="RESOURCE"/>
+  <resource name="eraser" type="RESOURCE"/>
+  <resource name="snapToGrid" type="RESOURCE"/>
+  <resource name="walkmaskVisible" type="RESOURCE"/>
+  <resource name="bgVisible" type="RESOURCE"/>
+  <resource name="gridVisible" type="RESOURCE"/>
+  <resource name="moveTool" type="RESOURCE"/>
+  <resource name="gameMode_ctf" type="RESOURCE"/>
+  <resource name="saveEntities" type="RESOURCE"/>
+</resources>
