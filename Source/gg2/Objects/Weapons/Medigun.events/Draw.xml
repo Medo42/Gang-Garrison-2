@@ -63,12 +63,6 @@ if(instance_exists(healTarget))
             alarm[6] = 0;
         }
         imageOffset = owner.team+2;
-        
-        draw_set_alpha(0.1);
-        if (owner == global.myself.object)
-        {
-            draw_line_width_color(x,y,healTarget.object.x,healTarget.object.y, 1, color, color);
-        }
     }
 }else{
     if (alarm[6] &lt;= 0){
