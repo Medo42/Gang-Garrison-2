@@ -32,6 +32,7 @@
     reloadTime = 55;
     reloadBuffer = 0;
     idle=true;
+    detachTimeout = 0;
     
     // Threshhold system numbers
     healTierHealth = 125; // HP above which healing is slowed
