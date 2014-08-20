@@ -36,7 +36,7 @@ if(instance_exists(healTarget))
         starty = ydrawpos+lengthdir_y(24,owner.aimDirection);
         endx = healTarget.object.x;
         endy = healTarget.object.y;
-        dist = min(128,point_distance(startx,starty,endx,endy)*2);
+        dist = min(64,point_distance(startx,starty,endx,endy));
         dir = owner.aimDirection + (cos(current_time/150)*3);
         segments = 20; //Change this to increase/decrease quality.
         lastx = startx;
