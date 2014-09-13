@@ -29,11 +29,18 @@ else
 }
 xr = round(x);
 yr = round(y);
-if global.myself.team == team draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
-if (built &amp;&amp; hp &lt; .75 * maxHp) draw_sprite_part_ext(FlameS, random(4), 0, 0, 21, 9, xr-21/2, yr-15, 1, 1, c_white, 1 - (hp / maxHp));
-draw_sprite_ext(sprite_index,image_index,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+if global.myself.team == team draw_healthbar_planet(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
+if (built &amp;&amp; hp &lt; .75 * maxHp) draw_sprite_part_ext_planet(FlameS, random(4), 0, 0, 21, 9, xr-21/2, yr-15, 1, 1, c_white, 1 - (hp / maxHp));
+draw_sprite_ext_planet(sprite_index,image_index,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
 
-if(distance_to_point(mouse_x, mouse_y)&lt;25 &amp;&amp; global.myself.team == team) {
+// Find position of player projected onto planet
+var list, sentryX, sentryY;
+list = planetMapPosToPlanetPos(x, y);
+sentryX = ds_list_find_value(list, 2);
+sentryY = ds_list_find_value(list, 3);
+ds_list_destroy(list);
+
+if(point_distance(mouse_x, mouse_y, sentryX, sentryY)&lt;25 &amp;&amp; global.myself.team == team) {
     draw_set_alpha(1);   
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom); 
@@ -42,9 +49,9 @@ if(distance_to_point(mouse_x, mouse_y)&lt;25 &amp;&amp; global.myself.team == te
     } else {
         draw_set_color(c_blue);
     }
-    draw_text(xr, yr-45, ownerPlayer.name + "'s");
-    draw_text(xr, yr-35, "Autogun");
-}
+    draw_text_transformed_planet(xr, yr-45, ownerPlayer.name + "'s", 1, 1, 0);
+    draw_text_transformed_planet(xr, yr-35, "Autogun", 1, 1, 0);
+}  
 </argument>
       </arguments>
     </action>

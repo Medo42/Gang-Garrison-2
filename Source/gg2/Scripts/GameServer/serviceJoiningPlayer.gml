@@ -85,6 +85,7 @@ case STATE_CLIENT_AUTHENTICATED:
     write_string(socket, global.currentMap);
     write_ubyte(socket, string_length(global.currentMapMD5));
     write_string(socket, global.currentMapMD5);
+    write_ubyte(socket, global.serverPlanetMode);
     
     write_ubyte(socket, global.serverPluginsRequired);
     write_ubyte(socket, string_length(GameServer.pluginList));

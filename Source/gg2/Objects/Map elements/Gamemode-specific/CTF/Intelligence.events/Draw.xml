@@ -17,7 +17,7 @@
 if(!offset and instance_exists(InvasionHUD))
     exit;
 
-draw_sprite(sprite_index,image_index,x,y);
+draw_sprite_ext_planet(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 if (alarm[0] &gt; 0)
     draw_intel_timer(offset, alarm[0]/900*global.delta_factor);
 </argument>

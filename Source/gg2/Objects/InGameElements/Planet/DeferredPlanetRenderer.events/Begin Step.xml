@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">// Iterate over each pixel of surface
+var angle, radius, mapX, mapY, _y;
+
+// Switch to surface drawing
+surface_set_target(surface);
+
+for (_y = 0; _y &lt; global.planetCircleRadius * 2; _y += 1)
+{
+    // Calculate angle/radius of point on planet from x and y
+    angle = point_direction(global.planetCircleRadius, global.planetCircleRadius, _x, _y);
+    radius = point_distance(global.planetCircleRadius, global.planetCircleRadius, _x, _y);
+    // Figure out where that corresponds to on actual map
+    mapX = floor(global.planetMapWidth - (angle / 360) * global.planetMapWidth) mod global.planetMapWidth;
+    mapY = floor(global.planetMapHeight - (radius / global.planetCircleRadius) * global.planetMapHeight);
+    if (mapY &gt;= 0 and mapY &lt;= global.planetMapHeight)
+    {
+        // Fill in pixel from actual map
+        draw_background_part(background_index,
+            floor(mapX / 6),
+            floor(mapY / 6),
+            1,
+            1,
+            _x,
+            _y);
+    }
+}
+
+// Switch back to normal drawing
+surface_reset_target();
+
+_x += 1;
+
+// Reached end of loop
+if (!(_x &lt; global.planetCircleRadius * 2))
+{
+    var cacheFilename;
+    cacheFilename = planetCacheFilename();
+
+    // Create a sprite from surface
+    global.planetBackground = sprite_create_from_surface(
+        surface,
+        0,
+        0, 
+        global.planetCircleRadius * 2,
+        global.planetCircleRadius * 2,
+        false,
+        false,
+        global.planetCircleRadius,
+        global.planetCircleRadius);
+    
+    // Clear up
+    surface_free(surface);
+    
+    // Create cache dir if it doesn't exist
+    if (!directory_exists(working_directory + "\PlanetPrerenderCache"))
+        directory_create(working_directory + "\PlanetPrerenderCache");
+    
+    // Cache    
+    sprite_save(global.planetBackground, 0, cacheFilename);
+    
+    // Run callback
+    execute_string(callback);
+    
+    instance_destroy();
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

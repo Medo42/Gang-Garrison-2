@@ -42,7 +42,7 @@ if(stabbing)
 if (team == global.myself.team and (player != global.myself or global.showHealthBar))
 {
     draw_set_alpha(1);
-    draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
+    draw_healthbar_planet(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
 }
 
 draw_set_alpha(1);
@@ -167,40 +167,40 @@ yr += yoffset;
 
 if (omnomnomnom)
 {
-    draw_sprite_ext_overlay(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+    draw_sprite_ext_overlay_planet(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
     if (ubered)
-        draw_sprite_ext_overlay(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
+        draw_sprite_ext_overlay_planet(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
 }
 else if (taunting)
 {
-    draw_sprite_ext_overlay(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+    draw_sprite_ext_overlay_planet(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
     if (ubered)
-        draw_sprite_ext_overlay(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
+        draw_sprite_ext_overlay_planet(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
 }
 else if (player.humiliated)
-    draw_sprite_ext(humiliationPoses,floor(animationImage)+humiliationOffset,xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha);
+    draw_sprite_ext_planet(humiliationPoses,floor(animationImage)+humiliationOffset,xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha);
 else if (!taunting)
 {
     if (intel and player.class != CLASS_QUOTE and !zoomed)
-        draw_sprite_ext(spriteIntel,0,xr,round(y)+equipmentOffset, image_xscale, image_yscale, 0, c_white, image_alpha);
+        draw_sprite_ext_planet(spriteIntel,0,xr,round(y)+equipmentOffset, image_xscale, image_yscale, 0, c_white, image_alpha);
     if (cloak)
     {
         if (!ubered)
-            draw_sprite_ext(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha);
+            draw_sprite_ext_planet(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha);
         else if (ubered)
         {
-            draw_sprite_ext(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
-            draw_sprite_ext(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
+            draw_sprite_ext_planet(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+            draw_sprite_ext_planet(sprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
         }
     }
     else
     {
         if (!ubered)
-            draw_sprite_ext_overlay(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha,overlayOffset);
+            draw_sprite_ext_overlay_planet(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha,overlayOffset);
         else if (ubered)
         {
-            draw_sprite_ext_overlay(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,1,overlayOffset);
-            draw_sprite_ext_overlay(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7,overlayOffset);
+            draw_sprite_ext_overlay_planet(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,1,overlayOffset);
+            draw_sprite_ext_overlay_planet(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7,overlayOffset);
         }
     }
 }
@@ -209,12 +209,18 @@ if (burnDuration &gt; 0 or burnIntensity &gt; 0)
 {
     for(i = 0; i &lt; realnumflames; i += 1)
     {
-        draw_sprite_ext(FlameS, alarm[5] + i + random(2), x + flameArray_x[i], y + flameArray_y[i], 1, 1, 0, c_white, burnIntensity / maxIntensity * 0.5 + 0.25);
+        draw_sprite_ext_planet(FlameS, alarm[5] + i + random(2), x + flameArray_x[i], y + flameArray_y[i], 1, 1, 0, c_white, burnIntensity / maxIntensity * 0.5 + 0.25);
     }  
 }
 
-if (distance_to_point(mouse_x, mouse_y) &lt; 25)
-{
+// Find position of player projected onto planet
+var list, playerX, playerY;
+list = planetMapPosToPlanetPos(x, y);
+playerX = ds_list_find_value(list, 2);
+playerY = ds_list_find_value(list, 3);
+ds_list_destroy(list);
+
+if(point_distance(mouse_x, mouse_y, playerX, playerY)&lt;25) {
     if (cloak and team != global.myself.team)
         exit;
     draw_set_alpha(1);
@@ -227,18 +233,18 @@ if (distance_to_point(mouse_x, mouse_y) &lt; 25)
     width = name_width_badges(player);
     height = string_height(player.name);
     
-    draw_name_badges(round(xr - width / 2), round(y) - 35 - height, player);
+    draw_name_badges(round(xr - width / 2), round(y) - 35 - height, player, true);
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
     
     if(team == global.myself.team &amp;&amp; global.showTeammateStats)
     {
         if(weapons[0] == Medigun)
-            draw_text(xr,round(y)+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");
+            draw_text_planet(xr,yr+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");
         else if(weapons[0] == Shotgun)
-            draw_text(xr,round(y)+50, "Nuts 'N' Bolts: " + string(nutsNBolts));
+            draw_text_planet(xr,yr+50, "Nuts 'N' Bolts: " + string(nutsNBolts));
         else if(weapons[0] == Minegun)
-            draw_text(xr,round(y)+50, "Lobbed Mines: " + string(currentWeapon.lobbed));
+            draw_text_planet(xr,yr+50, "Lobbed Mines: " + string(currentWeapon.lobbed));
     }
 }
 

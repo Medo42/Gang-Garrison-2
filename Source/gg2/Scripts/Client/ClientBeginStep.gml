@@ -46,6 +46,8 @@ do {
             downloadMapName = receivestring(global.serverSocket, 1);
             advertisedMapMd5 = receivestring(global.serverSocket, 1);
             receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
+            global.planetMode = read_ubyte(global.tempBuffer);
+            receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
             pluginsRequired = read_ubyte(global.tempBuffer);
             plugins = receivestring(global.serverSocket, 1);
             if(string_pos("/", downloadMapName) != 0 or string_pos("\", downloadMapName) != 0)

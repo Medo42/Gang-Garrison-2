@@ -31,7 +31,7 @@ if(instance_exists(healTarget))
             color = c_blue;
             
         draw_set_alpha(0.3);
-        draw_line_width_color(xdrawpos+lengthdir_x(24,owner.aimDirection),ydrawpos+lengthdir_y(24,owner.aimDirection),healTarget.object.x, healTarget.object.y, 5, color, color);
+        draw_line_width_color_planet(xdrawpos+lengthdir_x(24,owner.aimDirection),ydrawpos+lengthdir_y(24,owner.aimDirection),healTarget.object.x, healTarget.object.y, 5, color, color);
         if (sprite_index != normalSprite) {
             //cancel the fire animation
             sprite_index = normalSprite;
@@ -50,13 +50,13 @@ if(instance_exists(healTarget))
 }
 
 
-if !owner.player.humiliated draw_sprite_ext(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, c_white, 1);
+if !owner.player.humiliated draw_sprite_ext_planet(sprite_index,imageOffset, xdrawpos, ydrawpos, image_xscale, image_yscale, image_angle, c_white, 1);
 if (owner.ubered) {
     if owner.team == TEAM_RED
         ubercolour = c_red;
     else if owner.team == TEAM_BLUE
         ubercolour = c_blue;
-    draw_sprite_ext(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
+    draw_sprite_ext_planet(sprite_index,imageOffset,round(x+xoffset*image_xscale),round(y+yoffset),image_xscale,image_yscale,image_angle,ubercolour,0.7*image_alpha);
 }
 </argument>
       </arguments>

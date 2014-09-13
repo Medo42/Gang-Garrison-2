@@ -23,9 +23,9 @@ if (tracerAlpha &gt; 0.05)
     
     draw_set_alpha(tracerAlpha);
     if(owner.team == TEAM_RED)
-        draw_line_width_color(shotx,shoty,x2,y2,2,c_red,c_red);
+        draw_line_width_color_planet(shotx,shoty,x2,y2,2,c_red,c_red);
     else
-        draw_line_width_color(shotx,shoty,x2,y2,2,c_blue,c_blue);
+        draw_line_width_color_planet(shotx,shoty,x2,y2,2,c_blue,c_blue);
     if(global.particles != PARTICLES_OFF)
         tracerAlpha /= delta_mult(1.75);
     else tracerAlpha = 0;

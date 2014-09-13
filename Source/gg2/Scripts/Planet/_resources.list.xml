@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="beginPlanetInit" type="RESOURCE"/>
+  <resource name="initPlanetImmediate" type="RESOURCE"/>
+  <resource name="initPlanetDeferred" type="RESOURCE"/>
+  <resource name="initPlanetFromCache" type="RESOURCE"/>
+  <resource name="endPlanetInit" type="RESOURCE"/>
+  <resource name="planetCacheFilename" type="RESOURCE"/>
+  <resource name="drawPlanet" type="RESOURCE"/>
+  <resource name="planetMapOrigin" type="RESOURCE"/>
+  <resource name="planetMapPosToPlanetPos" type="RESOURCE"/>
+  <resource name="draw_sprite_ext_planet" type="RESOURCE"/>
+  <resource name="draw_sprite_planet" type="RESOURCE"/>
+  <resource name="draw_sprite_part_ext_planet" type="RESOURCE"/>
+  <resource name="draw_text_transformed_planet" type="RESOURCE"/>
+  <resource name="draw_text_planet" type="RESOURCE"/>
+  <resource name="draw_line_width_color_planet" type="RESOURCE"/>
+  <resource name="draw_healthbar_planet" type="RESOURCE"/>
+</resources>

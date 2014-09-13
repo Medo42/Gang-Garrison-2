@@ -101,3 +101,46 @@ if(instance_exists(GameServer))
         GameServer.hostSeenMOTD = true;
     }
 }
+
+var planet;
+if (global.isHost)
+    planet = global.serverPlanetMode;
+else
+    planet = global.planetMode;
+if (planet)
+{
+    beginPlanetInit();
+    if (file_exists(planetCacheFilename()))
+    {
+        initPlanetFromCache();
+        endPlanetInit();
+        global.planetActive = true;
+    }
+    else
+    {
+        var deferred;
+        deferred = global.planetDeferred;
+        if (!deferred)
+        {
+            if (initPlanetImmediate())
+            {
+                endPlanetInit();
+                global.planetActive = true;
+                exit;
+            }
+            deferred = true;
+        }
+        if (deferred)
+        {
+            global.planetActive = false;
+            initPlanetDeferred('
+                endPlanetInit();
+                global.planetActive = true;
+            ');
+        }
+    }
+}
+else
+{
+    global.planetActive = false;
+}

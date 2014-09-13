@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">callback = '';
+
+// Create a drawing surface so we can pre-render the planet
+surface = surface_create(global.planetCircleRadius * 2, global.planetCircleRadius * 2);
+centreX = global.planetCircleRadius;
+centreY = global.planetCircleRadius;
+
+// Current column being rendered
+_x = 0;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

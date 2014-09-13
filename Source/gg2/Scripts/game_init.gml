@@ -93,6 +93,9 @@
         show_message("Error: Server plugin list cannot exceed 254 characters");
         return false;
     }
+    global.serverPlanetMode = ini_read_real("Server", "PlanetMode", 0);
+    
+    
     var CrosshairFilename, CrosshairRemoveBG;
     CrosshairFilename = ini_read_string("Settings", "CrosshairFilename", "");
     CrosshairRemoveBG = ini_read_real("Settings", "CrosshairRemoveBG", 1);
@@ -110,6 +113,7 @@
         global.game_fps = 60;
     else
         global.game_fps = 30;
+    global.planetDeferred = ini_read_real("Settings", "PlanetDeferred", 1);
     
     readClasslimitsFromIni();
 
@@ -167,7 +171,9 @@
     ini_write_real("General", "UpdaterBetaChannel", global.updaterBetaChannel);
     ini_write_real("Server", "Attempt UPnP Forwarding", global.attemptPortForward); 
     ini_write_string("Server", "ServerPluginList", global.serverPluginList); 
-    ini_write_real("Server", "ServerPluginsRequired", global.serverPluginsRequired); 
+    ini_write_real("Server", "ServerPluginsRequired", global.serverPluginsRequired);
+    ini_write_real("Server", "PlanetMode", global.serverPlanetMode);
+    
     ini_write_string("Settings", "CrosshairFilename", CrosshairFilename);
     ini_write_real("Settings", "CrosshairRemoveBG", CrosshairRemoveBG);
     ini_write_real("Settings", "Queued Jumping", global.queueJumping);

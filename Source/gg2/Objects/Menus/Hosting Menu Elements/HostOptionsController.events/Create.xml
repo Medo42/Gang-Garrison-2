@@ -67,7 +67,9 @@ menu_addedit_num("Deathmatch Kill Limit:", "global.killLimit", '
 menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
     gg2_write_ini("Server", "Respawn Time", argument0);
 ');
-    
+menu_addedit_boolean("Planet:", "global.serverPlanetMode", '
+    gg2_write_ini("Server", "PlanetMode", argument0);
+'); 
     
 menu_addtablink("Main", '
     instance_create(x,y,HostOptionsController);
