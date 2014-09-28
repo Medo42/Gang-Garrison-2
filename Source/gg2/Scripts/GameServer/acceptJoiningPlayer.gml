@@ -35,4 +35,6 @@ if (joiningSocket >= 0)
     
     joiningPlayer = instance_create(0,0,JoiningPlayer);
     joiningPlayer.socket = joiningSocket;
+    //resync with the lobby
+    sendLobbyRegistration();
 }
