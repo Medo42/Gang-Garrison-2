@@ -105,4 +105,4 @@ while (i <= len)
     show_error('Error when tokenising GGON: unexpected character "' + char + '"', true);
 }
 
-return tokens; 
+return tokens;
