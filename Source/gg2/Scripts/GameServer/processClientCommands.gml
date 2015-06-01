@@ -290,7 +290,7 @@ while(commandLimitRemaining > 0) {
                             break;
                     lastNamechange = current_time;
                     name = read_string(socket, nameLength);
-                    if(string_count("#",name) > 0)
+                    if((string_count("#",name) > 0) or (string_count(chr(10),name) > 0) or (string_count(chr(13),name) > 0))
                     {
                         name = "I <3 Bacon";
                     }
