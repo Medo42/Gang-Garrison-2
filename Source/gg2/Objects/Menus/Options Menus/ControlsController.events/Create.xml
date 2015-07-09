@@ -23,37 +23,37 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
-    menu_addedit_key("Jump/up:", "global.jump");
-    menu_addedit_key("Down:", "global.down");
-    menu_addedit_key("Left:", "global.left");
-    menu_addedit_key("Right:", "global.right");
-    menu_addedit_key("Taunt:", "global.taunt");
-    menu_addedit_key("Call for Healer:", "global.medic");
-    menu_addedit_key("Drop Case:", "global.drop");
-    menu_addedit_key("Show Scores:", "global.showScores");
+    menu_addedit_key(_("Jump/up:"), "global.jump");
+    menu_addedit_key(_("Down:"), "global.down");
+    menu_addedit_key(_("Left:"), "global.left");
+    menu_addedit_key(_("Right:"), "global.right");
+    menu_addedit_key(_("Taunt:"), "global.taunt");
+    menu_addedit_key(_("Call for Healer:"), "global.medic");
+    menu_addedit_key(_("Drop Case:"), "global.drop");
+    menu_addedit_key(_("Show Scores:"), "global.showScores");
     
-    menu_addtablink("Ingame", '
+    menu_addtablink(_("Ingame"), '
         instance_destroy();
         instance_create(x,y,OptionsController);
     ');
-    menu_addtablink("Engine", '
+    menu_addtablink(_("Engine"), '
         instance_destroy();
         instance_create(x,y,EngineOptionsController);
     ');
-    menu_addtablink("Controls 1", '
+    menu_addtablink(_("Controls 1"), '
         instance_destroy();
         instance_create(x,y,ControlsController);
     ');
-    menu_addtablink("Controls 2", '
+    menu_addtablink(_("Controls 2"), '
         instance_destroy();
         instance_create(x,y,AdvControlsController);
     ');
-    menu_addtablink("HUD", '
+    menu_addtablink(_("HUD"), '
         instance_destroy();
         instance_create(x,y,HUDOptionsController);
     ');
     
-    menu_addback("Back", '
+    menu_addback(_("Back"), '
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);

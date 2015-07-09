@@ -24,7 +24,7 @@
     bgtabs = true;
     
     oldPlayerName = global.playerName;
-    menu_addedit_text2("Player name:", "global.playerName", '
+    menu_addedit_text2(_("Player name:"), "global.playerName", '
         var newName;
         newName = string_copy(argument0, 0, min(string_length(argument0), MAX_PLAYERNAME_LENGTH));
         gg2_write_ini("Settings", "PlayerName", newName);
@@ -38,41 +38,41 @@
         oldPlayerName = newName;
         return newName;
     '); 
-    menu_addedit_boolean("Healer Radar:", "global.medicRadar", '
+    menu_addedit_boolean(_("Healer Radar:"), "global.medicRadar", '
         gg2_write_ini("Settings", "Healer Radar", argument0);
     ');
-    menu_addedit_boolean("Show Healer:", "global.showHealer", '
+    menu_addedit_boolean(_("Show Healer:"), "global.showHealer", '
         gg2_write_ini("Settings", "Show Healer", argument0);
     ');
-    menu_addedit_boolean("Show Healing:", "global.showHealing", '
+    menu_addedit_boolean(_("Show Healing:"), "global.showHealing", '
         gg2_write_ini("Settings", "Show Healing", argument0);
     ');
-    menu_addedit_boolean("Additional Healthbar:", "global.showHealthBar", '
+    menu_addedit_boolean(_("Additional Healthbar:"), "global.showHealthBar", '
         gg2_write_ini("Settings", "Show Healthbar", argument0);
     ');
-    menu_addedit_boolean("Additional Teammate Stats:", "global.showTeammateStats", '
+    menu_addedit_boolean(_("Additional Teammate Stats:"), "global.showTeammateStats", '
         gg2_write_ini("Settings", "Show Extra Teammate Stats", argument0);
     ');
-    menu_addedit_boolean("Kill Cam:", "global.killCam", '
+    menu_addedit_boolean(_("Kill Cam:"), "global.killCam", '
         gg2_write_ini("Settings", "Kill Cam", argument0);
     ');
-    menu_addedit_boolean("Queued Jumping (Bunnyhopping):", "global.queueJumping", '
+    menu_addedit_boolean(_("Queued Jumping (Bunnyhopping):"), "global.queueJumping", '
         gg2_write_ini("Settings", "Queued Jumping", argument0);
     ');
     
-    menu_addtablink("Ingame", '
+    menu_addtablink(_("Ingame"), '
         instance_destroy();
         instance_create(x,y,OptionsController);
     ');
-    menu_addtablink("Engine", '
+    menu_addtablink(_("Engine"), '
         instance_destroy();
         instance_create(x,y,EngineOptionsController);
     ');
-    menu_addtablink("Controls 1", '
+    menu_addtablink(_("Controls 1"), '
         instance_destroy();
         instance_create(x,y,ControlsController);
     ');
-    menu_addtablink("Controls 2", '
+    menu_addtablink(_("Controls 2"), '
         instance_destroy();
         instance_create(x,y,AdvControlsController);
     ');
@@ -81,7 +81,7 @@
         instance_create(x,y,HUDOptionsController);
     ');
     
-    menu_addback("Back", '
+    menu_addback(_("Back"), '
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);

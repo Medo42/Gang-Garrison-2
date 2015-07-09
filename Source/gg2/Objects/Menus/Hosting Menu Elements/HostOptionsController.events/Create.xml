@@ -32,35 +32,35 @@ menumode = true;
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_addedit_text2("Server Name:", "global.serverName", '
+menu_addedit_text2(_("Server Name:"), "global.serverName", '
     var newName;
     newName = string_copy(argument0, 0, 25);
     gg2_write_ini("Server", "ServerName", newName);
     return newName;
 ');
-menu_addedit_text2("Welcome message:", "global.welcomeMessage", '
+menu_addedit_text2(_("Welcome message:"), "global.welcomeMessage", '
     var newMessage;
     newMessage = string_copy(argument0, 0, 255);
     gg2_write_ini("Server", "WelcomeMessage", newMessage);
     return newMessage;
 ');
 
-menu_addedit_text("Password:", "global.serverPassword", '
+menu_addedit_text(_("Password:"), "global.serverPassword", '
     gg2_write_ini("Server", "Password", argument0);
 ');
-menu_addedit_num("Player Limit:", "global.playerLimit", '
+menu_addedit_num(_("Player Limit:"), "global.playerLimit", '
     gg2_write_ini("Settings", "PlayerLimit", argument0);
 ', 48);
-menu_addedit_num("Time Limit (mins):", "global.timeLimitMins", '
+menu_addedit_num(_("Time Limit (mins):"), "global.timeLimitMins", '
     gg2_write_ini("Server", "Time Limit", argument0);
 ');
-menu_addedit_num("Capture Limit:", "global.caplimit", '
+menu_addedit_num(_("Capture Limit:"), "global.caplimit", '
     gg2_write_ini("Server", "CapLimit", argument0);
 ');
-menu_addedit_num("Deathmatch Kill Limit:", "global.killLimit", '
+menu_addedit_num(_("Deathmatch Kill Limit:"), "global.killLimit", '
     gg2_write_ini("Server", "Deathmatch Kill Limit", argument0);
 ');
-menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
+menu_addedit_num(_("Respawn Time (secs):"), "global.Server_RespawntimeSec", '
     gg2_write_ini("Server", "Respawn Time", argument0);
 ');
     
@@ -78,7 +78,7 @@ menu_addtablink("Classlimits", '
     instance_destroy();
 ');
 
-menu_addlink("Start Game", '
+menu_addlink(_("Start Game"), '
     //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
     if (global.Server_RespawntimeSec == 0)
         global.Server_Respawntime = 1;
@@ -87,7 +87,7 @@ menu_addlink("Start Game", '
     
     global.gameServer = instance_create(0,0,GameServer);
 ');
-menu_addback("Back", '
+menu_addback(_("Back"), '
     instance_create(x,y,MainMenuController);
     instance_destroy();
 ');

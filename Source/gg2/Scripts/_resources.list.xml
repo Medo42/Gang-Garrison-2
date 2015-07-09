@@ -33,6 +33,7 @@
   <resource name="Physics" type="GROUP"/>
   <resource name="Damage API" type="GROUP"/>
   <resource name="Kill Log" type="GROUP"/>
+  <resource name="Internationalisation" type="GROUP"/>
   <resource name="ds_list_turn" type="RESOURCE"/>
   <resource name="serializeState" type="RESOURCE"/>
   <resource name="deserializeState" type="RESOURCE"/>

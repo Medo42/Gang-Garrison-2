@@ -17,10 +17,10 @@
 
 menu_background(80, 24, 8, 12, 4);
 
-menu_addlink("Refresh", '
+menu_addlink(_("Refresh"), '
     event_user(0);
 ');
-menu_addback("Back", '
+menu_addback(_("Back"), '
     room_goto_fix(Menu);
 ');
 

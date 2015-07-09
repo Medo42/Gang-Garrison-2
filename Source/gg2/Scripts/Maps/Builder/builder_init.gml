@@ -9,7 +9,7 @@ global.placeEntityFunction = "";
 global.metadataFunction = "";
 
 // Add buttons
-addButton("Load map", '
+addButton(_("Load map"), '
     var map;
     map = get_open_filename("PNG|*.png","");
     if (map == "") break;
@@ -26,7 +26,7 @@ addButton("Load map", '
     Builder.wmString = compressWalkmask();
     loadMetadata(Builder.metadata, true);
 ');
-addButton("Load BG", '
+addButton(_("Load BG"), '
     var bg;
     bg = get_open_filename("PNG|*.png","");
     if(bg == "") break;
@@ -35,7 +35,7 @@ addButton("Load BG", '
     background_xscale[7] = 6;
     background_yscale[7] = 6;
 '); 
-addButton("Load WM", '
+addButton(_("Load WM"), '
     var wm;
     wm = get_open_filename("Walkmask Image (PNG or BMP)|*.png; *.bmp","");
     if(wm == "") break;
@@ -43,13 +43,13 @@ addButton("Load WM", '
     background_replace(BuilderWMB, wm, true, false);
     Builder.wmString = compressWalkmask();
 '); 
-addButton("Show BG", 'background_visible[7] = argument0;', 1, 1); 
-addButton("Show WM", 'Builder.showWM = argument0;', 1); 
-addButton("Show grid", 'Builder.showGrid = argument0;', 1);
-addButton("Show FG",'ParallaxController.visible = argument0;', 1, 1); 
-addButton("Save & test", '
-    if (Builder.mapWM == "") show_message("Select a walkmask first.");
-    else if (Builder.mapBG == "") show_message("Select a background first");
+addButton(_("Show BG"), 'background_visible[7] = argument0;', 1, 1); 
+addButton(_("Show WM"), 'Builder.showWM = argument0;', 1); 
+addButton(_("Show grid"), 'Builder.showGrid = argument0;', 1);
+addButton(_("Show FG"),'ParallaxController.visible = argument0;', 1, 1); 
+addButton(_("Save & test"), '
+    if (Builder.mapWM == "") show_message(_("Select a walkmask first."));
+    else if (Builder.mapBG == "") show_message(_("Select a background first"));
     else if (validateMap(log2(gamemode))) {    
         var leveldata;
         leveldata = compressEntities() + chr(10) + Builder.wmString;
@@ -59,7 +59,9 @@ addButton("Save & test", '
         if (file_exists("Maps\ggb2_tmp_map.png")) file_delete("Maps\ggb2_tmp_map.png");
         file_copy(Builder.mapBG, "Maps\ggb2_tmp_map.png");
         
-        switch(show_message_ext("Compilation completed. The map is saved to " + string(Builder.mapBG) + ".", "Ok", "Test separately", "Test here")) {
+        var str;
+        str = _("Compilation completed. The map is saved to %LOCATION%.");
+        switch(show_message_ext(string_replace(str, "%LOCATION", string(Builder.mapBG)), _("Ok"), _("Test separately"), _("Test here"))) {
             case 2:             
                 startGG2("-map ggb2_tmp_map");
             break;       
@@ -73,9 +75,9 @@ addButton("Save & test", '
         }
     }
 '); 
-addButton("Test w/o save", '
-    if (Builder.mapWM == "") show_message("Select a walkmask first.");
-    else if (Builder.mapBG == "") show_message("Select a background first");
+addButton(_("Test w/o save"), '
+    if (Builder.mapWM == "") show_message(_("Select a walkmask first."));
+    else if (Builder.mapBG == "") show_message(_("Select a background first"));
     else if (validateMap(log2(gamemode))) {
         // Save to a temporary file
         if (file_exists("Maps\ggb2_tmp_map.png")) file_delete("Maps\ggb2_tmp_map.png");
@@ -85,7 +87,7 @@ addButton("Test w/o save", '
         leveldata = compressEntities() + chr(10) + Builder.wmString;
         GG2DLL_embed_PNG_leveldata("Maps/ggb2_tmp_map.png", leveldata);               
         
-        switch(show_message_ext("Where do you want to playtest?", "Test separately", "Test here", "Cancel")) {
+        switch(show_message_ext("Where do you want to playtest?", _("Test separately"), _("Test here"), _("Cancel"))) {
             case 1:             
                 startGG2("-map ggb2_tmp_map");
             break;       
@@ -99,23 +101,23 @@ addButton("Test w/o save", '
         }          
     }
 ');
-addButton("Symmetry mode", '
+addButton(_("Symmetry mode"), '
     Builder.symmetry = argument0;
     return argument0;
 ', 1); 
-addButton("Scale mode", '
+addButton(_("Scale mode"), '
     Builder.scale = argument0;
     return argument0;
 ', 1, 1);
-addButton("Fast scrolling",'
+addButton(_("Fast scrolling"),'
     Builder.moveSpeed = 32 + 32*argument0;
     return argument0;
 ', 1);
-addButton("Edit metadata", '
+addButton(_("Edit metadata"), '
     showPropertyMenu(Builder.metadata, Builder.metadata, true);
     loadMetadata(Builder.metadata, true);   // Reload
 ');
-addButton("Add resource", '
+addButton(_("Add resource"), '
     var prop;
     prop = get_string("Resource name:", "");
     if (prop != "")
@@ -128,9 +130,9 @@ addButton("Add resource", '
     }
 ');
 
-addButton("Get resources", '
+addButton(_("Get resources"), '
     if (Builder.mapBG == "")
-        show_message("Load a map first");
+        show_message(_("Load a map first"));
     else
     {
         if (!directory_exists(working_directory + "/Maps/Decompiled"))
@@ -151,18 +153,20 @@ addButton("Get resources", '
                 bg = false;
                 
             stringToResource(ds_map_find_value(Builder.metadata, resource), bg, working_directory + "/Maps/Decompiled/" + resource);
-        }  
-        show_message("The map has been decompiled to " + working_directory + "/Maps/Decompiled/ .");
+        }
+        var msg;
+        msg = _("The map has been decompiled to %LOCATION% .");
+        show_message(string_replace(msg, "%LOCATION%", working_directory + "/Maps/Decompiled/"));
     }
 ');
-addButton("Load entities", '
+addButton(_("Load entities"), '
     unloadResources();
     ds_map_clear(Builder.metadata);
     loadEntities();
 '); 
-addButton("Save entities", 'saveEntities();');
-addButton("Clear entities", '
-    if (show_question("Are you sure you want to scrap your entities?")) {
+addButton(_("Save entities"), 'saveEntities();');
+addButton(_("Clear entities"), '
+    if (show_question(_("Are you sure you want to scrap your entities?"))) {
         unloadResources();
         ds_map_clear(Builder.metadata);
         ds_map_add(Builder.metadata, "type", "meta");
@@ -174,8 +178,8 @@ addButton("Clear entities", '
 
 // Add gamemodes
 var ctf, cp, adcp, koth, dkoth, arena, gen;
-addGamemode("Free mode");
-ctf = addGamemode("Capture the flag (ctf)", '
+addGamemode(_("Free mode"));
+ctf = addGamemode(_("Capture the flag (ctf)"), '
     var redCount, blueCount;
     redCount = 0;
     blueCount = 0;
@@ -186,7 +190,7 @@ ctf = addGamemode("Capture the flag (ctf)", '
     if (redCount != 1 || blueCount != 1) return false;
     return true;
 ', "Ctf or invasion mode needs 1 red and 1 blue intelligence.");
-cp = addGamemode("Control points (cp)", '
+cp = addGamemode(_("Control points (cp)"), '
     var controlpoints, zones;
     controlpoints = 0;
     zones = 0;
@@ -197,7 +201,7 @@ cp = addGamemode("Control points (cp)", '
     if (controlpoints == 0 || controlpoints > 5 || zones == 0) return false;
     return true;
 ', "CP needs 1-5 control points and capturezones.");
-adcp = addGamemode("A/D control points (adcp)", '
+adcp = addGamemode(_("A/D control points (adcp)"), '
     var controlpoints, zones, gates;
     controlpoints = 0;
     zones = 0;
@@ -210,7 +214,7 @@ adcp = addGamemode("A/D control points (adcp)", '
     if (controlpoints == 0 || controlpoints >= 5 || zones == 0 || gates == 0) return false;
     return true;
 ', "A/D CP needs 1-5 control points, capturezones and setup gates.");
-koth = addGamemode("King of the hill (koth)", '
+koth = addGamemode(_("King of the hill (koth)"), '
     var controlpoints, zones;
     controlpoints = 0;
     zones = 0;
@@ -221,7 +225,7 @@ koth = addGamemode("King of the hill (koth)", '
     if (controlpoints != 1 || zones == 0) return false;
     return true;
 ', "KOTH needs 1 control point and capturezones.");
-dkoth = addGamemode("Dual king of the hill (dkoth)" ,'
+dkoth = addGamemode(_("Dual king of the hill (dkoth)"),'
     var redcontrolpoints, bluecontrolpoints, zones;
     redcontrolpoints = 0;
     bluecontrolpoints = 0;
@@ -234,7 +238,7 @@ dkoth = addGamemode("Dual king of the hill (dkoth)" ,'
     if (redcontrolpoints != 1 || bluecontrolpoints != 1 || zones == 0) return false;
     return true;
 ', "DKOTH needs 1 red control point, 1 blue control point and capturezones.");
-arena = addGamemode("Arena (arena)", '
+arena = addGamemode(_("Arena (arena)"), '
     var controlpoints, zones;
     controlpoints = 0;
     zones = 0;
@@ -245,7 +249,7 @@ arena = addGamemode("Arena (arena)", '
     if (controlpoints != 1 || zones == 0) return false;
     return true;
 ', "Arena needs 1 control point and capturezones.");
-gen = addGamemode("Generator (gen)", '
+gen = addGamemode(_("Generator (gen)"), '
     var redgen, bluegen;
     redgen = 0;
     bluegen = 0;

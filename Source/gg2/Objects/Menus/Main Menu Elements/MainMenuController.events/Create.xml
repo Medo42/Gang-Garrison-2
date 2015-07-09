@@ -19,38 +19,38 @@
     
     menu_background(208, 24, 8, 12, 4);
     
-    menu_addlink("Host Game", 'event_user(0);');
-    menu_addlink("Join (lobby)", '
+    menu_addlink(_("Host Game"), 'event_user(0);');
+    menu_addlink(_("Join (lobby)"), '
         room_goto_fix(Lobby);
     ');
-    menu_addlink("Join (manual)", '
+    menu_addlink(_("Join (manual)"), '
         global.isHost = false;
-        global.serverIP = get_string("Please enter the IP address or hostname of the server you want to join", "127.0.0.1");
-        global.serverPort = get_integer("Please enter the port of the server you want to join", 8190);
+        global.serverIP = get_string(_("Please enter the IP address or hostname of the server you want to join"), "127.0.0.1");
+        global.serverPort = get_integer(_("Please enter the port of the server you want to join"), 8190);
         instance_create(0,0,Client);
         Client.returnRoom = Menu;
     ');
-    menu_addlink("Garrison Builder", '
+    menu_addlink(_("Garrison Builder"), '
         room_goto_fix(BuilderOptions);
     ');
-    menu_addlink("Options", '
+    menu_addlink(_("Options"), '
         room_goto_fix(Options);
     ');
     if (global.rewardId != '')
     {
-        menu_addlink("Manage Haxxy Rewards", '
+        menu_addlink(_("Manage Haxxy Rewards"), '
             splash_set_main(false);
             splash_set_interrupt(false);
             splash_show_web("http://www.ganggarrison.com/forums/rewards/frame.php?gg2_login=yes&amp;reward_id=" + global.rewardId + "&amp;reward_key=" + hex(global.rewardKey), 0);
         ');
     }
-    menu_addlink("Credits", '
+    menu_addlink(_("Credits"), '
         room_goto_fix(Credits);
     ');
-    menu_addlink("Visit The Forums",'
+    menu_addlink(_("Visit The Forums"),'
         action_splash_web("http://www.ganggarrison.com/forums/index.php", 1)
     ');
-    menu_addback("Quit", '
+    menu_addback(_("Quit"), '
         game_end();
     ');
 

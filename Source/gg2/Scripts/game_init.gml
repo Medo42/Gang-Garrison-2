@@ -41,6 +41,9 @@
     window_set_region_scale(-1, false);
     
     ini_open("gg2.ini");
+    global.language = ini_read_string("Settings", "Language", "en");
+    // We initialise this right away so we can present friendly error messages
+    i18nInit(global.language);
     global.playerName = ini_read_string("Settings", "PlayerName", "Player");
     global.playerName = string_copy(global.playerName, 0, min(string_length(global.playerName), MAX_PLAYERNAME_LENGTH));
     global.fullscreen = ini_read_real("Settings", "Fullscreen", 0);
@@ -90,7 +93,7 @@
     global.serverPluginList = ini_read_string("Server", "ServerPluginList", "");
     global.serverPluginsRequired = ini_read_real("Server", "ServerPluginsRequired", 0);
     if (string_length(global.serverPluginList) > 254) {
-        show_message("Error: Server plugin list cannot exceed 254 characters");
+        show_message(_("Error: Server plugin list cannot exceed 254 characters"));
         return false;
     }
     var CrosshairFilename, CrosshairRemoveBG;
@@ -118,7 +121,7 @@
     {
         global.playerLimit = 48;
         if (global.dedicatedMode != 1)
-            show_message("Warning: Player Limit cannot exceed 48. It has been set to 48");
+            show_message(_("Warning: Player Limit cannot exceed 48. It has been set to 48"));
     }
     
     global.currentMapArea=1;
@@ -129,7 +132,8 @@
     // Create plugin packet maps
     global.pluginPacketBuffers = ds_map_create();
     global.pluginPacketPlayers = ds_map_create();
-        
+    
+    ini_write_string("Settings", "Language", global.language);
     ini_write_string("Settings", "PlayerName", global.playerName);
     ini_write_real("Settings", "Fullscreen", global.fullscreen);
     ini_write_real("Settings", "UseLobby", global.useLobbyServer);

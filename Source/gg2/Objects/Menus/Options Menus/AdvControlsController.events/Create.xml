@@ -23,36 +23,36 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
-    menu_addedit_keyormouse("Primary Fire:", "global.attack");
-    menu_addedit_keyormouse("Secondary Ability:", "global.special");
-    menu_addedit_key("Emoticon Menu:", "global.chat1");
-    menu_addedit_key("Gameplay Emote Menu:", "global.chat2");
-    menu_addedit_key("Direction Emote Menu:", "global.chat3");
-    menu_addedit_key("Change Team:", "global.changeTeam");
-    menu_addedit_key("Change Class:", "global.changeClass");
+    menu_addedit_keyormouse(_("Primary Fire:"), "global.attack");
+    menu_addedit_keyormouse(_("Secondary Ability:"), "global.special");
+    menu_addedit_key(_("Emoticon Menu:"), "global.chat1");
+    menu_addedit_key(_("Gameplay Emote Menu:"), "global.chat2");
+    menu_addedit_key(_("Direction Emote Menu:"), "global.chat3");
+    menu_addedit_key(_("Change Team:"), "global.changeTeam");
+    menu_addedit_key(_("Change Class:"), "global.changeClass");
     
-    menu_addtablink("Ingame", '
+    menu_addtablink(_("Ingame"), '
         instance_destroy();
         instance_create(x,y,OptionsController);
     ');
-    menu_addtablink("Engine", '
+    menu_addtablink(_("Engine"), '
         instance_destroy();
         instance_create(x,y,EngineOptionsController);
     ');
-    menu_addtablink("Controls 1", '
+    menu_addtablink(_("Controls 1"), '
         instance_destroy();
         instance_create(x,y,ControlsController);
     ');
-    menu_addtablink("Controls 2", '
+    menu_addtablink(_("Controls 2"), '
         instance_destroy();
         instance_create(x,y,AdvControlsController);
     ');
-    menu_addtablink("HUD", '
+    menu_addtablink(_("HUD"), '
         instance_destroy();
         instance_create(x,y,HUDOptionsController);
     ');
     
-    menu_addback("Back", '
+    menu_addback(_("Back"), '
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);
