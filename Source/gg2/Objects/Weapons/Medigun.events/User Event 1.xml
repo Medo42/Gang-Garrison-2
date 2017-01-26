@@ -73,7 +73,13 @@
     if(instance_exists(healTarget)) {
         if(healTarget.object != -1) {
             if(point_distance(x,y,healTarget.object.x, healTarget.object.y)&lt;=maxHealDistance) {
-                if(collision_line(x,y, healTarget.object.x, healTarget.object.y, Obstacle, true, true)&lt;0) {
+                if (collision_line(x+lengthdir_x(24,owner.aimDirection),y+lengthdir_y(24,owner.aimDirection), healTarget.object.x, healTarget.object.y, Obstacle, true, true)&lt;0)
+                {
+                    detachTimeout = 0;
+                } else {
+                    detachTimeout += 1;
+                }
+                if (detachTimeout&lt;10) {
                     healedThisStep = true;
                     
                     if (healTarget.object.healer == -1)
@@ -129,14 +135,17 @@
                     }
                     alarm[3] = 2 / global.delta_factor;
                 } else {
+                    detachTimeout = 0;
                     healTarget.object.healer = -1;
                     healTarget = noone;
                 }
             } else {
+                detachTimeout = 0;
                 healTarget.object.healer = -1;
                 healTarget = noone;
             }
         } else {
+            detachTimeout = 0;
             healTarget = noone;
         }
     }
