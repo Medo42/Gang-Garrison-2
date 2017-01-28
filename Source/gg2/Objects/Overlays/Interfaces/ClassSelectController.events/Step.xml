@@ -41,7 +41,7 @@ else if mouse_x&gt;xoffset+64 &amp;&amp; mouse_x &lt;xoffset+100 &amp;&amp; mous
     newclass=1;
     text[0]="Firebug";
     text[1]="Weapon: Flamethrower";
-    text[2]="Gets close to burn his foes.";
+    text[2]="Gets close to burn her foes.";
     text[3]="Pushes enemies and projectiles";
     text[4]="away with a burst of air.";
 }
@@ -68,9 +68,9 @@ else if mouse_x&gt;xoffset+196 &amp;&amp; mouse_x &lt;xoffset+232 &amp;&amp; mou
     newclass=4;
     text[0]="Detonator";
     text[1]="Weapon: Mine Launcher";
-    text[2]="A master of explosives, the";
-    text[3]="Detonator can stick mines to";
-    text[4]="any surface and set them off.";
+    text[2]="A master of explosives, she";
+    text[3]="can stick mines to any surface";
+    text[4]="and set them off.";
 }
 
 else if mouse_x&gt;xoffset+236 &amp;&amp; mouse_x &lt;xoffset+272 &amp;&amp; mouse_y&lt;yoffset+50{
@@ -86,9 +86,9 @@ else if mouse_x&gt;xoffset+288 &amp;&amp; mouse_x &lt;xoffset+324 &amp;&amp; mou
     newclass=6;
     text[0]="Constructor";
     text[1]="Weapon: Shotgun";
-    text[2]="A brilliant inventor, the";
-    text[3]="Constructor can build sentry";
-    text[4]="guns that protect whole areas.";
+    text[2]="A brilliant inventor, she can";
+    text[3]="build sentry guns that protect";
+    text[4]="whole areas.";
 }
 
 else if mouse_x&gt;xoffset+328 &amp;&amp; mouse_x &lt;xoffset+364 &amp;&amp; mouse_y&lt;yoffset+50{
