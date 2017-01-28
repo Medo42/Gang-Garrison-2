@@ -19,11 +19,11 @@
     {
         var seed;
         seed = irandom(65535);
-        sendEventFireWeapon(ownerPlayer, seed);
+        sendEventFireWeapon(ownerPlayer, seed);                            
         doEventFireWeapon(ownerPlayer, seed);
     }
 }
-else if(readyToStab &amp;&amp; owner.cloak)
+else if(readyToStab &amp;&amp; owner.cloak &amp;&amp; !mouse_check_button(mb_right))
 {
     owner.runPower = 0;
     owner.jumpStrength = 0;
