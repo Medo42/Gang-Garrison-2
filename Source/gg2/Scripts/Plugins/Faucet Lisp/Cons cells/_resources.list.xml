@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="lispNil" type="RESOURCE"/>
+  <resource name="lispIsNil" type="RESOURCE"/>
+  <resource name="lispCons" type="RESOURCE"/>
+  <resource name="lispHead" type="RESOURCE"/>
+  <resource name="lispTail" type="RESOURCE"/>
+  <resource name="lispDestroyCell" type="RESOURCE"/>
+  <resource name="lispAddRef" type="RESOURCE"/>
+  <resource name="lispRemoveRef" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Cons cells" type="GROUP"/>
+  <resource name="lispParse" type="RESOURCE"/>
+  <resource name="lispTokenise" type="RESOURCE"/>
+  <resource name="lispParseTokens" type="RESOURCE"/>
+  <resource name="lispDesugarParseTree" type="RESOURCE"/>
+  <resource name="lispParseTreeToConsList" type="RESOURCE"/>
+  <resource name="lispUnparseParseTree" type="RESOURCE"/>
+  <resource name="lispDestroyParseTree" type="RESOURCE"/>
+</resources>
