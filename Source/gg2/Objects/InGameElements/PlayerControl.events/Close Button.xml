@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">game_end();
+        <argument kind="STRING">if (keyboard_check(vk_alt) or keyboard_check(vk_f4))
+    exit;
+else
+    game_end();
 </argument>
       </arguments>
     </action>
