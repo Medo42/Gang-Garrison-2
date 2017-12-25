@@ -7,8 +7,9 @@ var list, i, pluginname, pluginhash, url, handle, filesize, failed, fp, hashedLi
 failed = false;
 hashedList = '';
 
-// split plugin list string
-list = split(argument0, ',');
+// split plugin list string and clean list from spaces
+parsedList = string_replace_all(argument0, " ", "");
+list = split(parsedList, ',');
 
 // Check plugin names and check for duplicates
 for (i = 0; i < ds_list_size(list); i += 1)
