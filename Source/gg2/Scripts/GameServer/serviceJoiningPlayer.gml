@@ -78,6 +78,23 @@ case STATE_EXPECT_PASSWORD:
     break;
 
 case STATE_CLIENT_AUTHENTICATED:
+    //Check if server is full
+    var noOfPlayers;
+    noOfPlayers = ds_list_size(global.players);
+    if(global.dedicatedMode)
+        noOfPlayers -= 1;
+        
+    if(noOfPlayers >= global.playerLimit)
+    {
+        write_ubyte(socket, SERVER_FULL);
+        break;
+    }
+    
+    //Message lobby to update playercount if we became full
+    if(noOfPlayers+1 == global.playerLimit)
+        sendLobbyRegistration();
+    
+    //Only now start talking with client
     write_ubyte(socket, HELLO);
     write_ubyte(socket, string_length(global.serverName));
     write_string(socket, global.serverName);
@@ -130,16 +147,7 @@ case STATE_EXPECT_COMMAND:
     break;
 
 case STATE_EXPECT_NAME:
-    var noOfPlayers, player;
-    noOfPlayers = ds_list_size(global.players);
-    if(global.dedicatedMode)
-        noOfPlayers -= 1;
-        
-    if(noOfPlayers >= global.playerLimit)
-    {
-        write_ubyte(socket, SERVER_FULL);
-        break;
-    }
+    var player;
     
     ServerJoinUpdate(socket);
     
@@ -152,10 +160,6 @@ case STATE_EXPECT_NAME:
     
     ds_list_add(global.players, player);
     ServerPlayerJoin(player.name, global.sendBuffer);
-    
-    // message lobby to update playercount if we became full
-    if(noOfPlayers+1 == global.playerLimit)
-        sendLobbyRegistration();
     
     if(global.welcomeMessage != "")
         ServerMessageString(global.welcomeMessage, player.socket);
