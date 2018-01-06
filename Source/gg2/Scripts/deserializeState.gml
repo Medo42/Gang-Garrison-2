@@ -9,8 +9,24 @@ if(argument0 == FULL_UPDATE) {
 }
 
 receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
-if(read_ubyte(global.tempBuffer) != ds_list_size(global.players))
+if(read_ubyte(global.tempBuffer) != ds_list_size(global.players)) {
     show_message("Wrong number of players while deserializing state");
+    //Disconnects from server and ends script
+    if(global.serverPluginsInUse)
+    {
+        pluginscleanup(true);
+    }
+    else
+    {
+        global.dedicatedMode = 0;
+        with(Client)
+            instance_destroy();
+
+        with(GameServer)
+            instance_destroy();
+    }
+    exit;
+}
 
 if(argument0 != CAPS_UPDATE) {
     for(i=0; i<ds_list_size(global.players); i+=1) {
