@@ -41,12 +41,6 @@ if (setOffsets) {
     if (layerIndex &lt; 7) {
         if (background_visible[layerIndex]) {
             draw_sprite(SpectatorCrosshairS, 0, map_width()/2 + round(background_x[layerIndex]), map_height()/2 + round(background_y[layerIndex]));
-            draw_set_color(make_color_rgb(159, 159, 159));
-            draw_rectangle(round(mouse_x)+10, round(mouse_y)+10, round(mouse_x)+75, round(mouse_y)+43, false);
-            draw_set_color(make_color_rgb(63, 63, 63));
-            draw_rectangle(round(mouse_x)+10, round(mouse_y)+10, round(mouse_x)+75, round(mouse_y)+43, true);
-            draw_text(round(mouse_x)+13, round(mouse_y)+13, "X: " + string(ParallaxController.background_xfactor[layerIndex]));
-            draw_text(round(mouse_x)+13, round(mouse_y)+30, "Y: " + string(ParallaxController.background_yfactor[layerIndex]));
         }
     }
 }
@@ -170,14 +164,36 @@ if (layerIndex &lt; 8)
 
 // Clear &amp; offsets button
 draw_rectangle(xOffset+27, yOffset+buttonHeight-3+layerHeight, xOffset+90, yOffset+buttonHeight-23+layerHeight, true);
-draw_rectangle(xOffset+97, yOffset+buttonHeight-3+layerHeight, xOffset+157, yOffset+buttonHeight-23+layerHeight, true);
 
 // Text
 draw_text(xOffset+40, yOffset+buttonHeight-18+layerHeight, "Clear");
 if (!setOffsets)
-    draw_text(xOffset+100, yOffset+buttonHeight-18+layerHeight, "Offsets");
+{
+    draw_rectangle(xOffset+97, yOffset+buttonHeight-3+layerHeight, xOffset+157, yOffset+buttonHeight-23+layerHeight, true);
+    draw_text(xOffset+100, yOffset+buttonHeight-18+layerHeight, " Depth");
+}
 else
-    draw_text(xOffset+110, yOffset+buttonHeight-18+layerHeight, "Save");
+{
+    draw_rectangle(xOffset+97, yOffset+buttonHeight-3+layerHeight, xOffset+111, yOffset+buttonHeight-23+layerHeight, true);
+    draw_rectangle(xOffset+111, yOffset+buttonHeight-3+layerHeight, xOffset+125, yOffset+buttonHeight-23+layerHeight, true);
+    draw_rectangle(xOffset+125, yOffset+buttonHeight-3+layerHeight, xOffset+157, yOffset+buttonHeight-23+layerHeight, true);
+    if(!(layerIndex &lt; 7 or background_visible[layerIndex]))
+        draw_set_color(c_gray);
+    draw_text(xOffset+98, yOffset+buttonHeight-18+layerHeight, "X");
+    draw_text(xOffset+112, yOffset+buttonHeight-18+layerHeight, "Y");
+    if(!(layerIndex &lt; 7 or background_visible[layerIndex]))
+        draw_set_color(c_black);
+    draw_text(xOffset+125, yOffset+buttonHeight-18+layerHeight, "Save");
+    if(layerIndex &lt; 7 and background_visible[layerIndex])
+    {
+        draw_set_color(make_color_rgb(159, 159, 159));
+        draw_rectangle(xOffset+10, yOffset+10-43, xOffset+75, yOffset+43-43, false);
+        draw_set_color(make_color_rgb(63, 63, 63));
+        draw_rectangle(xOffset+10, yOffset+10-43, xOffset+75, yOffset+43-43, true);
+        draw_text(xOffset+13, yOffset+13-43, "X: " + string(ParallaxController.background_xfactor[layerIndex]));
+        draw_text(xOffset+13, yOffset+30-43, "Y: " + string(ParallaxController.background_yfactor[layerIndex]));
+    }
+}
 draw_text(xOffset+6, yOffset+buttonHeight + 35, layerName);
 
 // Layer preview
