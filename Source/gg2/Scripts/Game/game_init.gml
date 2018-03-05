@@ -42,7 +42,7 @@
     
     global.CustomMapCollisionSprite = -1;
 	
-	global.defaultBackground = choose(MenuBackground1, MenuBackground2);
+    global.defaultBackground = choose(MenuBackground1, MenuBackground2);
     
     window_set_region_scale(-1, false);
     
