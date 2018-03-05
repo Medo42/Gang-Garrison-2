@@ -105,7 +105,9 @@
 
     // use default background if ini says we should
     if (global.backgroundHash == "default")
-        menuimage = global.defaultBackground;
+    {
+        menuimage = choose(MenuBackground1, MenuBackground2);
+    }
 
     if(global.dedicatedMode == 1)
         event_user(0);
