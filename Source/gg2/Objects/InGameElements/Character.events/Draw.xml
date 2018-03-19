@@ -54,7 +54,7 @@ if(stabbing)
 if (team == global.myself.team and (player != global.myself or global.showHealthBar))
 {
     draw_set_alpha(1);
-    draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
+    draw_healthbar(xr-10, yr-30, xr+10, yr-25, hp*100/maxHp, c_black, c_red, c_green, 0, true, true);
 }
 
 draw_set_alpha(1);
@@ -86,7 +86,7 @@ else if (!noNewAnim)
     }
     else
     {
-        if(hspeed==0)
+        if(hspeed == 0)
         {
             // set up vars for slope detection
             charSetSolids();
@@ -275,11 +275,11 @@ if (distance_to_point(mouse_x, mouse_y) &lt; 25)
     if(team == global.myself.team &amp;&amp; global.showTeammateStats)
     {
         if(weapons[0] == Medigun)
-            draw_text(xr,round(y)+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");
+            draw_text(xr, round(y)+50, "Superburst: " + string(currentWeapon.uberCharge/20) + "%");
         else if(weapons[0] == Shotgun)
-            draw_text(xr,round(y)+50, "Nuts 'N' Bolts: " + string(nutsNBolts));
+            draw_text(xr, round(y)+50, "Nuts 'N' Bolts: " + string(nutsNBolts));
         else if(weapons[0] == Minegun)
-            draw_text(xr,round(y)+50, "Lobbed Mines: " + string(currentWeapon.lobbed));
+            draw_text(xr, round(y)+50, "Lobbed Mines: " + string(currentWeapon.lobbed));
     }
 }
 
@@ -287,8 +287,8 @@ if (distance_to_point(mouse_x, mouse_y) &lt; 25)
 // All credit be upon him
 if (demon != -1)
 {
-    demonX = median(x-40,demonX,x+40);
-    demonY = median(y-40,demonY,y);
+    demonX = median(x-40, demonX, x+40);
+    demonY = median(y-40, demonY, y);
     demonOffset += demonDir;
     if (abs(demonOffset) &gt; 15)
         demonDir *= -1;

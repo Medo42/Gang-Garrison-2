@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">{
-    var temp;
+        <argument kind="STRING">var temp;
     write_ubyte(global.serializeBuffer, keyState);
     write_ushort(global.serializeBuffer, netAimDirection);
     write_ubyte(global.serializeBuffer, aimDistance/2);
@@ -63,10 +62,7 @@ if(global.updateType == FULL_UPDATE){
     with(currentWeapon) {
         event_user(12);
     }
-    }
 }
-
-
 </argument>
       </arguments>
     </action>

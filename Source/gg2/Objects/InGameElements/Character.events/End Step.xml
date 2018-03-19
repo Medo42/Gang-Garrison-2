@@ -29,7 +29,7 @@ yprevious = y;
 
 charUnsetSolids();
 
-if(global.isHost &amp;&amp; hp&lt;=0) {
+if(global.isHost &amp;&amp; hp &lt;= 0) {
     var assistant;
     assistant = secondToLastDamageDealer;
     with(lastDamageDealer)
@@ -46,34 +46,34 @@ if(global.isHost &amp;&amp; hp&lt;=0) {
 }
     
 if(hp&gt;maxHp) {
-    hp=maxHp;
+    hp = maxHp;
 }
     
 if(((aimDirection+270) mod 360)&gt;180) {
-    image_xscale=1;
-    currentWeapon.image_xscale=1;
+    image_xscale = 1;
+    currentWeapon.image_xscale = 1;
     currentWeapon.image_angle = aimDirection;
 } else {
     image_xscale=-1;
-    currentWeapon.image_xscale=-1;
+    currentWeapon.image_xscale = -1;
     currentWeapon.image_angle = aimDirection+180;
 }
     
-currentWeapon.x=round(x);
-currentWeapon.y=round(y);
+currentWeapon.x = round(x);
+currentWeapon.y = round(y);
     
 // Limit people to the area of the room to prevent the
 // "Falling through the floors" issue.
-if(x&lt;0) {
-    x=0;
+if(x &lt; 0) {
+    x = 0;
 }
-if(x&gt;map_width()){
+if(x &gt; map_width()){
     x = map_width();
 }
-if(y&lt;0) {
+if(y &lt; 0) {
     y = 0;
 }
-if(y&gt;map_height()){
+if(y &gt; map_height()){
     y = map_height();
 }
 
@@ -101,7 +101,7 @@ if (taunting)
 if (omnomnomnom)
 {
     omnomnomnomindex += 0.25 * global.delta_factor;
-    image_xscale=xscale;
+    image_xscale = xscale;
     if(hp &lt; maxHp) // This should prevent the "ate and got hit but didn't refresh cooldown" bug
     { // Also, cooldown is now reset continually until fully healed or finished eating.
         canEat = false;
@@ -110,15 +110,15 @@ if (omnomnomnom)
     if (hp &lt;= maxHp)
         hp += 1.6 * global.delta_factor;
     if (omnomnomnomindex &gt;= omnomnomnomend)
-        omnomnomnom=false;
+        omnomnomnom = false;
 }
 
 //for things polling whether the character is on a medcabinet
 onCabinet = place_meeting(x, y, HealingCabinet);
 
 // Last x/y position for death cam if player is dead
-player.lastKnownx=x;
-player.lastKnowny=y;
+player.lastKnownx = x;
+player.lastKnowny = y;
 
 // Here the view is set
 if (player == global.myself)

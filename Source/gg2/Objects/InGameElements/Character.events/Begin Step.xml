@@ -99,9 +99,9 @@ if(!taunting and !omnomnomnom)
     }
     if(!player.humiliated and pressedKeys &amp; $01)  {
         if (!invisible &amp;&amp; cloakAlpha == 1)
-            taunting=true;
-        tauntindex=0;
-        image_speed=tauntspeed;
+            taunting = true;
+        tauntindex = 0;
+        image_speed = tauntspeed;
     } 
     
     if(((pressedKeys &amp; $80) or (player.queueJump and wantToJump)) and vspeed &gt; -jumpStrength)
@@ -112,7 +112,7 @@ if(!taunting and !omnomnomnom)
             if(not stabbing)
             {
                 wantToJump = false;
-                playsound(x,y,JumpSnd);
+                playsound(x, y, JumpSnd);
                 vspeed = -jumpStrength;
                 onground = false; // Correct unless you are standing on a platform which moves up faster than jumpStrength
             }
@@ -123,7 +123,7 @@ if(!taunting and !omnomnomnom)
             wantToJump = false;
             vspeed = -jumpStrength;
             onground = false; // Correct unless you are standing on a platform which moves up faster than jumpStrength
-            playsound(x,y,JumpSnd);
+            playsound(x, y, JumpSnd);
             doublejumpUsed = 1;
             moveStatus = 0;
         }
@@ -183,7 +183,7 @@ default:
 }
 
 var rocketJumping;
-rocketJumping = moveStatus == 1 or moveStatus == 2 or moveStatus == 4;
+rocketJumping = (moveStatus == 1 or moveStatus == 2 or moveStatus == 4);
 if(rocketJumping)
 {
     if(global.run_virtual_ticks)
@@ -191,10 +191,10 @@ if(rocketJumping)
         if !variable_local_exists("jumpFlameParticleType")
         {
             jumpFlameParticleType = part_type_create();
-            part_type_sprite(jumpFlameParticleType,FlameS,true,false,true);
-            part_type_alpha2(jumpFlameParticleType,1,0.3);
-            part_type_life(jumpFlameParticleType,2,5);
-            part_type_scale(jumpFlameParticleType,0.7,-0.65);
+            part_type_sprite(jumpFlameParticleType, FlameS, true, false, true);
+            part_type_alpha2(jumpFlameParticleType, 1, 0.3);
+            part_type_life(jumpFlameParticleType, 2, 5);
+            part_type_scale(jumpFlameParticleType, 0.7, -0.65);
         }
         
         if !variable_global_exists("jumpFlameParticleSystem")
@@ -207,14 +207,14 @@ if(rocketJumping)
         {
             if(random(1) &gt; (controlFactor+frictionFactor)/2)
             {
-                effect_create_below(ef_smoke,x-hspeed*1.2,y-vspeed*1.2+20,0,c_gray);
+                effect_create_below(ef_smoke, x-hspeed*1.2, y-vspeed*1.2+20, 0, c_gray);
             }
         }
         if(global.particles == PARTICLES_NORMAL or global.particles == PARTICLES_ALTERNATIVE)
         {
             if(random(7) &lt; 5)
             {
-                part_particles_create(global.jumpFlameParticleSystem,x,y+19,jumpFlameParticleType,1);
+                part_particles_create(global.jumpFlameParticleSystem, x, y+19, jumpFlameParticleType, 1);
             }
         }
     }
@@ -226,10 +226,10 @@ if(spinjumping)
     if !variable_local_exists("jumpDustParticleType")
     {
         jumpDustParticleType = part_type_create();
-        part_type_sprite(jumpDustParticleType,SpeedBoostS,false,false,true);
-        part_type_alpha3(jumpDustParticleType,0.7,0.5,0);
-        part_type_life(jumpDustParticleType,15,30);
-        part_type_scale(jumpDustParticleType,1,1);
+        part_type_sprite(jumpDustParticleType, SpeedBoostS, false, false, true);
+        part_type_alpha3(jumpDustParticleType, 0.7, 0.5 ,0);
+        part_type_life(jumpDustParticleType, 15, 30);
+        part_type_scale(jumpDustParticleType, 1, 1);
         part_type_orientation(jumpDustParticleType, -90, -90, 0, 0, 0);
     }
     if !variable_global_exists("jumpDustParticleSystem")
@@ -318,7 +318,7 @@ if (intel)
             if (random(1) &gt; 0.90)
             {
                 var sheet;
-                sheet = instance_create(x,y-11+random(9),LooseSheet);
+                sheet = instance_create(x, y-11+random(9), LooseSheet);
                 sheet.hspeed = hspeed;
                 if (hasReward(player, "GoldTrail"))
                     sheet.sprite_index = choose(SheetFallingGold1, SheetFallingGold2, SheetFallingGold3);
@@ -327,7 +327,7 @@ if (intel)
         else if (random(1) &gt; 0.975)
         {
             var sheet;
-            sheet = instance_create(x,y-11+random(9),LooseSheet);
+            sheet = instance_create(x, y-11+random(9), LooseSheet);
             sheet.hspeed = hspeed;
             if (hasReward(player, "GoldTrail"))
                 sheet.sprite_index = choose(SheetFallingGold1, SheetFallingGold2, SheetFallingGold3);
@@ -335,13 +335,13 @@ if (intel)
     }
     if (cloak)
     {
-        cloak=false;
-        cloakAlpha=1;
+        cloak = false;
+        cloakAlpha = 1;
     }
     if (!omnomnomnom) // Do not recharge intel timer if eating
         intelRecharge = min(INTEL_MAX_TIMER, // Cap timer charge at the intel timer's length (bandwidth)
                             intelRecharge + global.delta_factor * // ...After adding some value to it 
-                            INTEL_MAX_TIMER/((3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
+                            INTEL_MAX_TIMER/( (3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
 }
 
 if(player.humiliated)
@@ -406,9 +406,9 @@ if ubered {
 var arenaRoundEnd;
 arenaRoundEnd = true;
 if instance_exists(ArenaHUD) { 
-    if(ArenaHUD.endCount!=0) 
-        arenaRoundEnd=true;
-    else arenaRoundEnd=false;
+    if(ArenaHUD.endCount != 0) 
+        arenaRoundEnd = true;
+    else arenaRoundEnd = false;
 }
 
 if (arenaRoundEnd and global.mapchanging and !player.humiliated) {
@@ -438,7 +438,7 @@ if (player.humiliated)
 
 // Determine if the character is capturing a CP, and which
 var zone;
-zone = collision_point(x,y,CaptureZone,0,0);
+zone = collision_point(x, y, CaptureZone, 0, 0);
 
 if(zone &gt;= 0 and !cloak and cloakAlpha == 1)
 {

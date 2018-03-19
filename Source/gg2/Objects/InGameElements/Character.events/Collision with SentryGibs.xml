@@ -16,7 +16,7 @@
         <argument kind="STRING">if player.class == CLASS_ENGINEER &amp;&amp; nutsNBolts &lt; maxNutsNBolts {
     with other instance_destroy();
     nutsNBolts += 50;
-    playsound(x,y,PickupSnd);
+    playsound(x, y, PickupSnd);
 }
 </argument>
       </arguments>

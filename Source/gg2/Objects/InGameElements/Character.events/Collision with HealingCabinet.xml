@@ -20,7 +20,7 @@
             hp += global.delta_factor/30*10; // 10 hp per second
         else
         {
-            playsound(x,y,CbntHealSnd);
+            playsound(x, y, CbntHealSnd);
             hp = maxHp;
             nutsNBolts = maxNutsNBolts;
             alarm[6] = 0;
@@ -43,10 +43,10 @@
             case Flamethrower:
             case Blade:
                 if (currentWeapon.ammoCount / currentWeapon.maxAmmo &lt; 5/6)
-                    playsound(x,y,PickupSnd);
+                    playsound(x, y, PickupSnd);
                 break;
             default:
-                playsound(x,y,PickupSnd);
+                playsound(x, y, PickupSnd);
                 break;
             }
             currentWeapon.ammoCount = currentWeapon.maxAmmo;
