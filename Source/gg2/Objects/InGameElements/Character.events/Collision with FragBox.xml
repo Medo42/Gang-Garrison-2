@@ -13,8 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">playsound(x,y,ExplosionSnd);
-hp=0;
+        <argument kind="STRING">playsound(x, y, ExplosionSnd);
+hp = 0;
 if (instance_exists(lastDamageDealer) &amp;&amp; lastDamageDealer != player)
     lastDamageSource = DAMAGE_SOURCE_FINISHED_OFF_GIB;
 else

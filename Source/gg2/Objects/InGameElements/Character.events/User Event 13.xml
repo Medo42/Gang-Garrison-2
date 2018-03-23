@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    receiveCompleteMessage(global.serverSocket,4,global.deserializeBuffer);
+    receiveCompleteMessage(global.serverSocket, 4, global.deserializeBuffer);
     keyState = read_ubyte(global.deserializeBuffer);
     aimDirection = read_ushort(global.deserializeBuffer)*360/65536;
     aimDistance = read_ubyte(global.deserializeBuffer)*2;
@@ -38,7 +38,7 @@
     }
     
 if(global.updateType == FULL_UPDATE){
-        receiveCompleteMessage(global.serverSocket,7,global.deserializeBuffer);
+        receiveCompleteMessage(global.serverSocket, 7, global.deserializeBuffer);
         animationOffset = read_ubyte(global.deserializeBuffer);
         //class specific syncs
         switch(player.class)

@@ -28,7 +28,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">canGrabIntel=true;</argument>
+        <argument kind="STRING">canGrabIntel = true;</argument>
       </arguments>
     </action>
   </actions>

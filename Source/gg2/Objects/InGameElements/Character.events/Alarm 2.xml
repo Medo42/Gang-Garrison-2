@@ -29,7 +29,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">ubered = 0;
-playsound(x,y,UberEndSnd);</argument>
+playsound(x, y, UberEndSnd);</argument>
       </arguments>
     </action>
   </actions>

@@ -48,8 +48,8 @@
         }
     }
     
-    player.object=-1;
-    if (place_meeting(x,y,SpawnRoom) or deathmatch_invulnerable != 0)
+    player.object = -1;
+    if (place_meeting(x, y, SpawnRoom) or deathmatch_invulnerable != 0)
     {
         player.alarm[5] = 1;
         player.deathmatch_respawn_bypass = deathmatch_invulnerable;

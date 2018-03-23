@@ -125,10 +125,10 @@
     lastDamageSource = -1;
     secondToLastDamageDealer = noone;
     
-    bubble = instance_create(0,0,SpeechBubbleO);
+    bubble = instance_create(0, 0, SpeechBubbleO);
     bubble.owner = id;
 
-    afk=false;
+    afk = false;
     
     // Cloak for Spies
     cloak = false;
@@ -196,7 +196,7 @@
     
     // Let's spawn our weapon
     global.paramOwner = id;
-    currentWeapon = instance_create(x,y,weapons[0]);
+    currentWeapon = instance_create(x, y, weapons[0]);
     global.paramOwner = noone;
     
     // Gear that drops with gibs
